@@ -8,8 +8,6 @@
 <!DOCTYPE html>
 <html>
 <head> 
-    
-    
     <title>Sign Out</title>
     <script>
         function confirmSignOut() {
