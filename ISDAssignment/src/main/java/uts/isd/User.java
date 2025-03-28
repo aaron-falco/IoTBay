@@ -11,13 +11,13 @@ import java.io.Serializable;
  * @author aaron
  */
 public class User implements Serializable{
-    private String username;
+    private String name;
     private String password;
     private String email;
     private String dob;
 
     public String getUsername() {
-        return username;
+        return name;
     }
 
     public String getPassword() {
@@ -33,7 +33,7 @@ public class User implements Serializable{
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.name = username;
     }
 
     public void setPassword(String password) {
