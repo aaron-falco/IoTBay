@@ -1,7 +1,7 @@
 <%-- 
     Document   : register
     Created on : 28 Mar 2025, 2:18:55 pm
-    Author     : aaron
+    Author     : lmao
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
