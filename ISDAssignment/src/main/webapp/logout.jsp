@@ -6,8 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    
+<html>  
 <head>
     <title>Sign Out</title>
     <script>
