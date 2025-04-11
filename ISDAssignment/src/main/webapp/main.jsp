@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome Page</title>
+    <title>Main Page</title>
 </head>
 <body>
     <h2>Welcome Page</h2>
@@ -18,8 +18,8 @@
         } else {  
     %>
     
-    <p>Hello, <%= user.getUsername() %>!</p>
     <p>Your email: <%= user.getEmail() %></p>
+    <p>Your password: <%= user.getPassword() %></p>
     
     <form action="logout.jsp" method="post">
         <button type="submit">Logout</button>

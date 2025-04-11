@@ -4,14 +4,29 @@
     Author     : aaron
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="uts.isd.User" %>
+<%@ page session="true" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Welcome</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            if ("POST".equalsIgnoreCase(request.getMethod())) {
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
+
+                User user = new User();
+                user.setPassword(password);
+                user.setEmail(email);
+
+                session.setAttribute("user", user);
+
+                response.sendRedirect("main.jsp");
+            }
+        %>
     </body>
 </html>
