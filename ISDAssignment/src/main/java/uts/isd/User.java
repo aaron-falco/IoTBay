@@ -11,10 +11,18 @@ import java.io.Serializable;
  * @author aaron
  */
 public class User implements Serializable{
+    private String customerId;
     private String name;
     private String password;
     private String email;
     private String dob;
+    private String address;
+    private String phoneNumber;
+    private String lastLoginDateTime;
+    // private CustomerType customerType;
+    // private PaymentInformation;
+    // private List<Product> cart;
+    // private List<Order> orderHistory;
 
     public String getUsername() {
         return name;

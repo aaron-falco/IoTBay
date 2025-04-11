@@ -13,7 +13,6 @@
         function confirmSignOut() {
             if (confirm("Are you sure you want to sign out?")) {
                 window.location.href = 'index.html';
-                
             }
         }
     </script>
