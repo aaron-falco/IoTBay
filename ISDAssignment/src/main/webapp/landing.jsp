@@ -85,7 +85,8 @@
 <a href="#">Staff</a>
 <a href="#">Contact</a>
 </nav>
-<a href="registration2.jsp" class="button">Register</a>
+<a href="register.jsp" class="button">Register</a>
+<!-- Add Login Button  -->
 </header>
  
     <div class="hero">
