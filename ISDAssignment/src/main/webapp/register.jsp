@@ -5,12 +5,16 @@
 --%>
 
 
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
+        <link rel="stylesheet" href="IoTBayStyles.css">
     </head>
     <body>
+        <div class="defaultDivStyle">
         <h1>Register</h1>
         <form method="post" action="welcome.jsp">
             <label for="firstName">First Name:</label><br>
@@ -27,5 +31,6 @@
 
             <input type="submit" value="Register">
         </form>
+        </div>
     </body>
 </html>

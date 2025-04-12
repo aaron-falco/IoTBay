@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Sign Out</title>
+    <link rel="stylesheet" href="IoTBayStyles.css">
     <script>
         function confirmSignOut() {
             if (confirm("Are you sure you want to sign out?")) {
@@ -18,11 +19,13 @@
     </script>
 </head>
 <body>
+    <div class="defaultDivStyle">
     <%
         session.invalidate();
         %>
-    <h1>Sign Out?</h1>
-    <button onclick="confirmSignOut()">Sign Out</button>
+        <h1>Sign Out?</h1>
+        <button onclick="confirmSignOut()">Sign Out</button>
+    </div>
 </body>
 </html>
 

@@ -12,7 +12,8 @@ import java.io.Serializable;
  */
 public class User implements Serializable{
     private String customerId;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String password;
     private String email;
     private String dob;
@@ -24,8 +25,16 @@ public class User implements Serializable{
     // private List<Product> cart;
     // private List<Order> orderHistory;
 
-    public String getUsername() {
-        return name;
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPassword() {
@@ -40,8 +49,28 @@ public class User implements Serializable{
         return dob;
     }
 
-    public void setUsername(String username) {
-        this.name = username;
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getLastLoginDateTime() {
+        return lastLoginDateTime;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setPassword(String password) {
@@ -54,5 +83,18 @@ public class User implements Serializable{
 
     public void setDob(String dob) {
         this.dob = dob;
-    }    
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setLastLoginDateTime(String lastLoginDateTime) {
+        this.lastLoginDateTime = lastLoginDateTime;
+    }
+    
 }
