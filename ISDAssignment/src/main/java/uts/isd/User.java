@@ -19,7 +19,7 @@ public class User implements Serializable{
     private String dob;
     private String address;
     private String phoneNumber;
-    private String lastLoginDateTime;
+    //private String lastLoginDateTime;
     // private CustomerType customerType;
     // private PaymentInformation;
     // private List<Product> cart;
@@ -57,10 +57,6 @@ public class User implements Serializable{
         return phoneNumber;
     }
 
-    public String getLastLoginDateTime() {
-        return lastLoginDateTime;
-    }
-
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
@@ -91,10 +87,5 @@ public class User implements Serializable{
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public void setLastLoginDateTime(String lastLoginDateTime) {
-        this.lastLoginDateTime = lastLoginDateTime;
-    }
-    
+    }    
 }
