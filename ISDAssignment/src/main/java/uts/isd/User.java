@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package uts.isd;
 
 import java.io.Serializable;
 
-/**
- *
- * @author aaron
- */
 public class User implements Serializable{
     private String customerId;
     private String firstName;
@@ -19,11 +11,6 @@ public class User implements Serializable{
     private String dob;
     private String address;
     private String phoneNumber;
-    //private String lastLoginDateTime;
-    // private CustomerType customerType;
-    // private PaymentInformation;
-    // private List<Product> cart;
-    // private List<Order> orderHistory;
 
     public String getCustomerId() {
         return customerId;
@@ -87,5 +74,7 @@ public class User implements Serializable{
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }    
+    }
+    
+    
 }
