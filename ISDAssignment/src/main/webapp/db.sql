@@ -5,26 +5,16 @@
 CREATE DATABASE IoTBayDB;
 
 -- Create Tables
-CREATE TABLE STAFF(
-    staffId VARCHAR(10),
+CREATE TABLE USERS(
+    userId VARCHAR(10),
     firstName VARCHAR(20),
     lastName VARCHAR(20),
     password VARCHAR(20),
     email VARCHAR(20),
-    PRIMARY KEY (staffId)
-);
-
-CREATE TABLE CUSTOMERS(
-    customerId VARCHAR(10),
-    firstName VARCHAR(20),
-    lastName VARCHAR(20),
-    password VARCHAR(20),
-    email VARCHAR(20),
-    dob DATE,
     address VARCHAR(100),
-    cardNumber VARCHAR(12),
-    ccv VARCHAR(3),
-    PRIMARY KEY (customerId)
+    phoneNumber VARCHAR(10),
+    userType ENUM('customer', 'staff', 'admin'), 
+    PRIMARY KEY (userId)
 );
 
 CREATE TABLE PRODUCTS(
@@ -45,19 +35,27 @@ CREATE TABLE ORDERS(
     PRIMARY KEY (orderId)
 );
 
+CREATE TABLE USERLOGINRECORDS(
+    loginRecordId VARCHAR(10),
+    userId VARCHAR(10),
+    loginDate DATE,
+    loginTime TIME,
+    PRIMARY KEY (loginRecordId)
+);
+
 -- Insert records into tables
-INSERT INTO APP.CUSTOMERS
+INSERT INTO APP.USERS
 VALUES
-('101', 'First', 'Last', 'password', 'email@domain.com', '2025-01-01', '1 Street Avenue, Suburb 2000', '1234567890', '123'),
-('102', 'James', 'Adams', '12345', 'james@email.com', '1985-10-10', '3 Avenue Road, Sydney 2222', '1234567890', '123'),
-('103', 'Regina', 'Smith', 'unsecure', 'regina@yourspace.com', '2003-09-08', '666 Road Street, Parramatta 3650', '1234567890', '123'),
-('104', 'Thor', 'Odinson', 'hammer', 'thunder@gods.com', '2005-09-06', '1234 Midgard Street, Midgard 0001', '1234567890', '123'),
-('105', 'Ark', 'Antos', 'myths', 'hero@athens.com', '1996-01-02', '1 Street Lane, Pymble 2221', '1234567890', '123'),
-('106', 'Maximum', 'Ride', 'fang', 'flying@theflock.com', '1997-05-08', '225 Nest Avenue, Tree 9999', '1234567890', '123'),
-('107', 'Veronica', 'Mars', 'private', 'veronica@mars.com', '1982-06-02', '96 Ripe Road, Sydney 2000', '1234567890', '123'),
-('108', 'Gohan', 'Son', 'books', 'gohan@sonfam.com', '2001-09-06', '123 Pod Street, West City 4562', '1234567890', '123'),
-('109', 'John', 'Jackson', 'different', 'john@jackson.com', '1960-01-01', '123 Street Avenue, Suburb 1234', '1234567890', '123'),
-('110', 'Jack', 'Johnson', 'different', 'jack@johnson.com', '1960-01-01', '321 Avenue Street, Brubus 4321', '1234567890', '123');
+('101', 'First', 'Last', 'password', 'email@domain.com', '1 Street Avenue, Suburb 2000', '1234567890', 'customer'),
+('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
+('103', 'Regina', 'Smith', 'unsecure', 'regina@yourspace.com', '666 Road Street, Parramatta 3650', '1234567890', 'admin'),
+('104', 'Thor', 'Odinson', 'hammer', 'thunder@gods.com', '1234 Midgard Street, Midgard 0001', '1234567890', 'customer'),
+('105', 'Ark', 'Antos', 'myths', 'hero@athens.com', '1 Street Lane, Pymble 2221', '1234567890', 'staff'),
+('106', 'Maximum', 'Ride', 'fang', 'flying@theflock.com', '225 Nest Avenue, Tree 9999', '1234567890', 'admin'),
+('107', 'Veronica', 'Mars', 'private', 'veronica@mars.com', '96 Ripe Road, Sydney 2000', '1234567890', 'customer'),
+('108', 'Gohan', 'Son', 'books', 'gohan@sonfam.com', '123 Pod Street, West City 4562', '1234567890', 'staff'),
+('109', 'John', 'Jackson', 'different', 'john@jackson.com', '123 Street Avenue, Suburb 1234', '1234567890', 'admin'),
+('110', 'Jack', 'Johnson', 'different', 'jack@johnson.com', '321 Avenue Street, Brubus 4321', '1234567890', 'customer');
 
 
 -- Examples of Table Interactions:

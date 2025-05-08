@@ -36,6 +36,4 @@ public class Customer extends User{
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
 }
