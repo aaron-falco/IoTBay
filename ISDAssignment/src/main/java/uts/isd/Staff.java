@@ -5,5 +5,13 @@
 package uts.isd;
 
 public class Staff extends User{
+    private String staffId;
     
+    public String GetStaffId(){
+        return staffId;
+    }
+    
+    public void SetStaffId(String id){
+        this.staffId = id;
+    }
 }

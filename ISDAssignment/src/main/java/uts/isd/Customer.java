@@ -9,6 +9,33 @@ package uts.isd;
  * @author aaron
  */
 public class Customer extends User{
-    public PaymentInformation paymentInfo;
+    private String customerId;
+    private String dob;
+    private String address;
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
     
 }
