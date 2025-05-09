@@ -9,9 +9,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login</title>
+        <link rel="stylesheet" href="IoTBayStyles.css">
+        <script>
+            function cancel() {
+                window.location.href = 'landing.jsp';
+            }
+        </script>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="defaultDivStyle">
+        <h1>Login:</h1>        
+        <form method="post" action="welcome.jsp">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+        <br><br>
+        <button class='button' onclick="cancel()">Cancel</button>
+        </div>
     </body>
 </html>

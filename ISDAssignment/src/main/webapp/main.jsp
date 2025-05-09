@@ -4,10 +4,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome Page</title>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="IoTBayStyles.css">
 </head>
 <body>
-    <h2>Welcome Page</h2>
+    <div class="defaultDivStyle">
+    <h2>Main Page</h2>
     <%
         User user = (User) session.getAttribute("user");
         if (user == null) {
@@ -18,8 +20,13 @@
         } else {  
     %>
     
-    <p>Hello, <%= user.getUsername() %>!</p>
-    <p>Your email: <%= user.getEmail() %></p>
+        <p>Your email: <%= user.getEmail() %></p>
+        <p>Your password: <%= user.getPassword() %></p>
+    
+    <% if(user.getFirstName() != null){ %>
+    <p>Your first name: <%= user.getFirstName() %></p>
+    <p>Your last name: <%= user.getLastName() %></p>
+    <%}%>
     
     <form action="logout.jsp" method="post">
         <button type="submit">Logout</button>
@@ -27,5 +34,6 @@
     <%
         }
     %>
+    </div>
 </body>
 </html>
