@@ -1,17 +1,23 @@
-<%-- 
+ <%-- 
     Document   : landing
     Created on : 28 Mar 2025, 2:19:40 pm
-    Author     : aaron
+    Author     : Nur Fatini Jamla Norlijam
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="UTF-8">
+        <title>Landing</title>
+        <link rel="stylesheet" href="IoTBayStyles.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="defaultDivStyle">
+            <h1>Welcome to IoTBay!</h1>
+            <p>Start your journey here – click below to register or login.</p>
+            <a class="button" href="register.jsp">Register</a>
+            <a class="button" href="login.jsp">Login</a>
+        </div>
     </body>
 </html>

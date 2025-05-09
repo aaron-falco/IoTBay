@@ -1,23 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package uts.isd;
 
 import java.io.Serializable;
 
-/**
- *
- * @author aaron
- */
 public class User implements Serializable{
-    private String username;
+    private String customerId;
+    private String firstName;
+    private String lastName;
     private String password;
     private String email;
     private String dob;
+    private String address;
+    private String phoneNumber;
 
-    public String getUsername() {
-        return username;
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPassword() {
@@ -32,8 +36,24 @@ public class User implements Serializable{
         return dob;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setPassword(String password) {
@@ -46,5 +66,15 @@ public class User implements Serializable{
 
     public void setDob(String dob) {
         this.dob = dob;
-    }    
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    
 }

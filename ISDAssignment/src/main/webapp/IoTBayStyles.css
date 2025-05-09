@@ -1,0 +1,37 @@
+.button {
+    padding: 12px 24px;
+    background: #e8e8e8;
+    color: black;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #cccccc;
+}
+
+input[type=submit]{
+    padding: 12px 24px;
+    background: #e8e8e8;
+    color: black;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.defaultDivStyle {           
+    text-align: center;
+    padding: 100px 20px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ff758c, #6a82fb);
+    color: white;
+}
