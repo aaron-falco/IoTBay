@@ -57,6 +57,18 @@ VALUES
 ('109', 'John', 'Jackson', 'different', 'john@jackson.com', '123 Street Avenue, Suburb 1234', '1234567890', 'admin'),
 ('110', 'Jack', 'Johnson', 'different', 'jack@johnson.com', '321 Avenue Street, Brubus 4321', '1234567890', 'customer');
 
+INSERT INTO PRODUCTS (productId, productName, productDescription, quantity, price)
+VALUES 
+('P001', 'Smart Thermostat', 'WiFi-enabled smart thermostat with mobile control and scheduling.', 50, 199.99),
+('P002', 'Security Camera', '1080p indoor/outdoor camera with motion detection and night vision.', 100, 89.95),
+('P003', 'Smart Light Bulb', 'Color-changing LED bulb compatible with Alexa and Google Home.', 200, 14.99),
+('P004', 'Smart Door Lock', 'Bluetooth-enabled door lock with keypad and remote access.', 40, 149.50),
+('P005', 'Water Leak Sensor', 'IoT sensor that alerts when water is detected in basements or kitchens.', 75, 39.95),
+('P006', 'Smart Plug', 'WiFi smart plug with energy monitoring features.', 150, 22.49),
+('P007', 'Air Quality Monitor', 'Tracks CO2, VOCs, and PM2.5 for better home air quality.', 60, 129.00),
+('P008', 'IoT Light Strip', 'RGB light strip with app control and voice assistant support.', 120, 34.99),
+('P009', 'Smart Speaker Hub', 'Centralized control for IoT devices with built-in voice assistant.', 90, 179.00),
+('P010', 'Motion Sensor', 'PIR motion sensor for home automation and security systems.', 110, 19.95);
 
 -- Examples of Table Interactions:
 -- Insert into Users Table

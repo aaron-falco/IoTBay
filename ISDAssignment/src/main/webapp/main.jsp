@@ -27,7 +27,9 @@
     <p>Your first name: <%= user.getFirstName() %></p>
     <p>Your last name: <%= user.getLastName() %></p>
     <%}%>
-    
+    <form action="Catalog.jsp" method="post">
+        <button type="submit">Catalog</button>
+    </form>
     <form action="logout.jsp" method="post">
         <button type="submit">Logout</button>
     </form>
