@@ -94,21 +94,28 @@ public class Product implements Serializable {
 
     // Method to initialize the database using the SQL script
     public static void initializeDatabase() {
-        String dbPath = "src/main/resources/db.sql"; // Path to db.sql script
+        String dbPath = "Web Pages/db.sql"; // Path to db.sql script
         String dbUrl = "jdbc:sqlite:src/main/resources/products.db"; // Path to SQLite database file
 
         try (Connection conn = DriverManager.getConnection(dbUrl)) {
-            Statement stmt = conn.createStatement();
-            
-            // Read the SQL script file and execute it
-            String sqlScript = new String(Files.readAllBytes(Paths.get(dbPath)), StandardCharsets.UTF_8); // Read SQL script
-            stmt.execute(sqlScript);  // Execute the SQL script to create tables and insert data
+    String sqlScript = new String(Files.readAllBytes(Paths.get(dbPath)), StandardCharsets.UTF_8);
 
-            System.out.println("Database initialized successfully.");
+    // Remove MySQL-only command if present
+    sqlScript = sqlScript.replaceAll("(?i)CREATE DATABASE.*?;", ""); 
 
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
+    Statement stmt = conn.createStatement();
+    for (String statement : sqlScript.split(";")) {
+        statement = statement.trim();
+        if (!statement.isEmpty() && !statement.startsWith("--")) {
+            stmt.execute(statement);
         }
+    }
+
+    System.out.println("Database initialized successfully.");
+} catch (SQLException | IOException e) {
+    e.printStackTrace();
+}
+
     }
 
     @Override

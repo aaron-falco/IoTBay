@@ -2,7 +2,7 @@
 -- As it stands, each order will only deal with a single product and when a customer orders multiple products they will technically create multiple orders.
 
 -- Create Database
-CREATE DATABASE IoTBayDB;
+--CREATE DATABASE IoTBayDB;
 
 -- Create Tables
 CREATE TABLE USERS(
