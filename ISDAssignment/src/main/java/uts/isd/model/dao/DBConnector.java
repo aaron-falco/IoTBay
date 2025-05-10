@@ -1,28 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package uts.isd.model.dao;
+
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 
 /**
  *
  * @author tomparry
  */
-public class DBConnector extends DB{
+public class DBConnector extends DB {
+    
     public DBConnector() throws ClassNotFoundException, SQLException {
+        // Load the Derby JDBC driver
         Class.forName(driver);
-        conn = DriverManager.getConnection(URL+db, dbuser, dbpass);
+
+        // Establish the connection to the database
+        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/App", "isduser", "admin");
+
+        // The URL+db will automatically append the database name, and `create=true` ensures
+        // the database is created if it doesn't already exist.
     }
     
-    public Connection openConnection(){
+    public Connection openConnection() {
         return this.conn;
     }
     
-    public void closeConnection() throws SQLException{
-        this.conn.close();
+    public void closeConnection() throws SQLException {
+        if (conn != null) {
+            conn.close();
+        }
     }
 }
