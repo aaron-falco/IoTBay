@@ -2,7 +2,7 @@
 -- As it stands, each order will only deal with a single product and when a customer orders multiple products they will technically create multiple orders.
 
 -- Create Database
---CREATE DATABASE IoTBayDB;
+CREATE DATABASE IoTBayDB;
 
 -- Create Tables
 CREATE TABLE USERS(
@@ -44,7 +44,7 @@ CREATE TABLE USERLOGINRECORDS(
 );
 
 -- Insert records into tables
-INSERT INTO APP.USERS
+INSERT INTO USERS
 VALUES
 ('101', 'First', 'Last', 'password', 'email@domain.com', '1 Street Avenue, Suburb 2000', '1234567890', 'customer'),
 ('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
