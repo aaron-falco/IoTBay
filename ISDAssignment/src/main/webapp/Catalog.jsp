@@ -1,45 +1,48 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="uts.isd.Product" %>
-<%@ page import="java.util.List" %>
-<%@ page import="uts.isd.Product" %>
+<%@ page import="uts.isd.model.dao.DBManager" %>
+<%
+    DBManager manager = (DBManager) session.getAttribute("manager");
+    ArrayList<Product> products = null;
+
+    if (manager != null) {
+        try {
+            products = manager.fetchProducts();
+        } catch (Exception e) {
+            out.println("<p>Error: " + e.getMessage() + "</p>");
+        }
+    }
+%>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Product List</title>
+    <title>Product Catalog</title>
 </head>
 <body>
-    <h1>Product List</h1>
-    
-    <%
-        // Initialize the database (you can put this in a separate method to call when needed)
-        Product.initializeDatabase();  // Calls the method to initialize the database from db.sql
+    <h2>Product Catalog</h2>
 
-        // Retrieve all products from the database
-        List<Product> products = Product.getAllProducts();
-
-        // Set the products list as a request attribute to use with JSTL
-        pageContext.setAttribute("products", products);
-    %>
-
-    <!-- Display products using JSTL -->
-    <table border="1">
-        <thead>
+    <% if (products != null && !products.isEmpty()) { %>
+        <table border="1" cellpadding="10">
             <tr>
-                <th>Product Name</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
                 <th>Price</th>
             </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="product" items="${products}">
+            <% for (Product p : products) { %>
                 <tr>
-                    <td>${product.productName}</td>
-                    <td>${product.price}</td>
+                    <td><%= p.getProductId() %></td>
+                    <td><%= p.getProductName() %></td>
+                    <td><%= p.getProductDescription() %></td>
+                    <td><%= p.getQuantity() %></td>
+                    <td>$<%= p.getPrice() %></td>
                 </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+            <% } %>
+        </table>
+    <% } else { %>
+        <p>No products found or database connection not initialized.</p>
+    <% } %>
 </body>
 </html>
