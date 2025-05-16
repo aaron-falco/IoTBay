@@ -11,7 +11,6 @@ CREATE TABLE USERS(
     lastName VARCHAR(20),
     password VARCHAR(20),
     email VARCHAR(20),
-    address VARCHAR(100),
     phoneNumber VARCHAR(10),
     userType INT, -- 0 = customer, 1 = staff, 2 = admins
     PRIMARY KEY (userId)
@@ -44,10 +43,21 @@ CREATE TABLE USERLOGINRECORDS(
     PRIMARY KEY (loginRecordId)
 );
 
+CREATE TABLE PAYMENTINFO(
+    paymentInfoId VARCHAR(10),
+    paymentType VARCHAR(10),
+    cardNumber VARCHAR(16),
+    cvc VARCHAR(4),
+    expiryDate DATE,
+    paymentAmount FLOAT,
+    paymentDate DATE,
+    PRIMARY KEY (paymentInfoId)
+);
+
 -- Insert records into tables
 INSERT INTO USERS
 VALUES
-('101', 'First', 'Last', 'password', 'email@domain.com', '1 Street Avenue, Suburb 2000', '1234567890', 0);
+('101', 'First', 'Last', 'password', 'email@domain.com', '1234567890', 0);
 -- ('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
 -- ('103', 'Regina', 'Smith', 'unsecure', 'regina@yourspace.com', '666 Road Street, Parramatta 3650', '1234567890', 'admin'),
 -- ('104', 'Thor', 'Odinson', 'hammer', 'thunder@gods.com', '1234 Midgard Street, Midgard 0001', '1234567890', 'customer'),
