@@ -13,7 +13,7 @@ CREATE TABLE USERS(
     email VARCHAR(20),
     address VARCHAR(100),
     phoneNumber VARCHAR(10),
-    userType ENUM('customer', 'staff', 'admin'), 
+    userType INT, -- 0 = customer, 1 = staff, 2 = admins
     PRIMARY KEY (userId)
 );
 
@@ -46,16 +46,16 @@ CREATE TABLE USERLOGINRECORDS(
 -- Insert records into tables
 INSERT INTO APP.USERS
 VALUES
-('101', 'First', 'Last', 'password', 'email@domain.com', '1 Street Avenue, Suburb 2000', '1234567890', 'customer'),
-('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
-('103', 'Regina', 'Smith', 'unsecure', 'regina@yourspace.com', '666 Road Street, Parramatta 3650', '1234567890', 'admin'),
-('104', 'Thor', 'Odinson', 'hammer', 'thunder@gods.com', '1234 Midgard Street, Midgard 0001', '1234567890', 'customer'),
-('105', 'Ark', 'Antos', 'myths', 'hero@athens.com', '1 Street Lane, Pymble 2221', '1234567890', 'staff'),
-('106', 'Maximum', 'Ride', 'fang', 'flying@theflock.com', '225 Nest Avenue, Tree 9999', '1234567890', 'admin'),
-('107', 'Veronica', 'Mars', 'private', 'veronica@mars.com', '96 Ripe Road, Sydney 2000', '1234567890', 'customer'),
-('108', 'Gohan', 'Son', 'books', 'gohan@sonfam.com', '123 Pod Street, West City 4562', '1234567890', 'staff'),
-('109', 'John', 'Jackson', 'different', 'john@jackson.com', '123 Street Avenue, Suburb 1234', '1234567890', 'admin'),
-('110', 'Jack', 'Johnson', 'different', 'jack@johnson.com', '321 Avenue Street, Brubus 4321', '1234567890', 'customer');
+('101', 'First', 'Last', 'password', 'email@domain.com', '1 Street Avenue, Suburb 2000', '1234567890', 0);
+-- ('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
+-- ('103', 'Regina', 'Smith', 'unsecure', 'regina@yourspace.com', '666 Road Street, Parramatta 3650', '1234567890', 'admin'),
+-- ('104', 'Thor', 'Odinson', 'hammer', 'thunder@gods.com', '1234 Midgard Street, Midgard 0001', '1234567890', 'customer'),
+-- ('105', 'Ark', 'Antos', 'myths', 'hero@athens.com', '1 Street Lane, Pymble 2221', '1234567890', 'staff'),
+-- ('106', 'Maximum', 'Ride', 'fang', 'flying@theflock.com', '225 Nest Avenue, Tree 9999', '1234567890', 'admin'),
+-- ('107', 'Veronica', 'Mars', 'private', 'veronica@mars.com', '96 Ripe Road, Sydney 2000', '1234567890', 'customer'),
+-- ('108', 'Gohan', 'Son', 'books', 'gohan@sonfam.com', '123 Pod Street, West City 4562', '1234567890', 'staff'),
+-- ('109', 'John', 'Jackson', 'different', 'john@jackson.com', '123 Street Avenue, Suburb 1234', '1234567890', 'admin'),
+-- ('110', 'Jack', 'Johnson', 'different', 'jack@johnson.com', '321 Avenue Street, Brubus 4321', '1234567890', 'customer');
 
 
 -- Examples of Table Interactions:

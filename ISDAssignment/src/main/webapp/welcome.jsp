@@ -7,6 +7,16 @@
 <%@ page import="uts.isd.User" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %> 
+<%
+class SelectExample {
+   static final String DB_URL = "jdbc:derby://localhost:1527//IoTBay [ on APP]";
+   static final String USER = "";
+   static final String PASS = "";
+   static final String QUERY = "SELECT * FROM USERS";
+   
+}
+%>
 <!DOCTYPE html>
 <html>
     <head>
