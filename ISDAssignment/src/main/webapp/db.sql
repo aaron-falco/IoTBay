@@ -20,6 +20,7 @@ CREATE TABLE USERS(
 CREATE TABLE PRODUCTS(
      productId VARCHAR(10),
      productName VARCHAR(30),
+     productType VARCHAR(30),
      productDescription VARCHAR(500),
      quantity INTEGER,
      price FLOAT,
@@ -44,7 +45,7 @@ CREATE TABLE USERLOGINRECORDS(
 );
 
 -- Insert records into tables
-INSERT INTO APP.USERS
+INSERT INTO USERS
 VALUES
 ('101', 'First', 'Last', 'password', 'email@domain.com', '1 Street Avenue, Suburb 2000', '1234567890', 0);
 -- ('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
@@ -57,6 +58,18 @@ VALUES
 -- ('109', 'John', 'Jackson', 'different', 'john@jackson.com', '123 Street Avenue, Suburb 1234', '1234567890', 'admin'),
 -- ('110', 'Jack', 'Johnson', 'different', 'jack@johnson.com', '321 Avenue Street, Brubus 4321', '1234567890', 'customer');
 
+INSERT INTO PRODUCTS (productId, productName, productType, productDescription, quantity, price)
+VALUES 
+('P001', 'Smart Thermostat', 'Thermostat', 'WiFi-enabled smart thermostat with mobile control and scheduling.', 50, 199.99),
+('P002', 'Security Camera', 'Camera', '1080p indoor/outdoor camera with motion detection and night vision.', 100, 89.95),
+('P003', 'Smart Light Bulb', 'Lighting', 'Color-changing LED bulb compatible with Alexa and Google Home.', 200, 14.99),
+('P004', 'Smart Door Lock', 'Lock', 'Bluetooth-enabled door lock with keypad and remote access.', 40, 149.50),
+('P005', 'Water Leak Sensor', 'Sensor', 'IoT sensor that alerts when water is detected in basements or kitchens.', 75, 39.95),
+('P006', 'Smart Plug', 'Plug', 'WiFi smart plug with energy monitoring features.', 150, 22.49),
+('P007', 'Air Quality Monitor', 'Monitor', 'Tracks CO2, VOCs, and PM2.5 for better home air quality.', 60, 129.00),
+('P008', 'IoT Light Strip', 'Lighting', 'RGB light strip with app control and voice assistant support.', 120, 34.99),
+('P009', 'Smart Speaker Hub', 'Hub', 'Centralized control for IoT devices with built-in voice assistant.', 90, 179.00),
+('P010', 'Motion Sensor', 'Sensor', 'PIR motion sensor for home automation and security systems.', 110, 19.95);
 
 -- Examples of Table Interactions:
 -- Insert into Users Table
