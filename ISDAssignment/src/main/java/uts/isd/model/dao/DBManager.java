@@ -28,9 +28,18 @@ public Product findProduct(String productId) throws SQLException {
     return null;
 }
 
+public void findUserFromId(String productId) throws SQLException {
+    
+}
+
 
 public void addProduct(String id, String name, String type, String desc, int quantity, float price) throws SQLException {
     String query = "INSERT INTO ISDUSER.Products VALUES ('" + id + "', '" + name + "', '" + type + "', '" + desc + "', " + quantity + ", " + price + ")";
+    st.executeUpdate(query);
+}
+
+public void addUser(String id, String firstName, String lastName, String email, String password, String phoneNumber, String userType) throws SQLException{
+    String query = "INSERT INTO ISDUSER.Users VALUES ('" + id + "', '" + firstName + "', '" + lastName + "', '" + password + "', '" + email + "', '" + phoneNumber + "', '" + userType + ");";
     st.executeUpdate(query);
 }
 
