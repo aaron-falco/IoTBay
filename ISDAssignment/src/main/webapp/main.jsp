@@ -34,7 +34,7 @@
             out.print("a Customer");
             break;
         case 1:
-            out.print("aStaff Member");
+            out.print("a Staff Member");
             break;
         case 2:
             out.print("an Admin");
