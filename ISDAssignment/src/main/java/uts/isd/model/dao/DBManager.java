@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 public class DBManager {
     private Statement st;
+    private Connection conn;
 
     public DBManager(Connection conn) throws SQLException {
         st = conn.createStatement();
+        this.conn = conn;
     }
 
 public Product findProduct(String productId) throws SQLException {
@@ -40,10 +42,16 @@ public void updateProduct(String id, String name, String type, String desc, int 
     st.executeUpdate(query);
 }
 
+public void deleteProduct(String id) throws SQLException {
+    String query = "DELETE FROM ISDUSER.Products WHERE productId = ?";
+    PreparedStatement ps = conn.prepareStatement(query);
+    ps.setString(1, id);
+    int rowsAffected = ps.executeUpdate();
 
-    public void deleteProduct(String id) throws SQLException {
-        st.executeUpdate("DELETE FROM ISDUSER.Products WHERE productId = '" + id + "'");
+    if (rowsAffected == 0) {
+        throw new SQLException("No product found with ID: " + id);
     }
+}
 
     public ArrayList<Product> fetchProducts() throws SQLException {
     String fetch = "SELECT * FROM ISDUSER.Products";
