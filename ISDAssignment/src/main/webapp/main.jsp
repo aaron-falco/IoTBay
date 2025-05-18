@@ -27,6 +27,29 @@
     <p>Your first name: <%= user.getFirstName() %></p>
     <p>Your last name: <%= user.getLastName() %></p>
     <%}%>
+    <p>You are
+<%
+    switch (user.getUserType()) {
+        case 0:
+            out.print("a Customer");
+            break;
+        case 1:
+            out.print("aStaff Member");
+            break;
+        case 2:
+            out.print("an Admin");
+            break;
+        default:
+            out.print("Not Logged In");
+    }
+%>
+</p>
+    <% if (user.getUserType() == 2) { %>
+    <form action="MANAGERADD.jsp" method="post">
+        <button type="submit">Edit Catalog</button>
+    </form>
+<% } %>
+
     <form action="Catalog.jsp" method="post">
         <button type="submit">Catalog</button>
     </form>

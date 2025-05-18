@@ -55,9 +55,6 @@
     <% } else { %>
         <p>No products found or database connection not initialized.</p>
     <% } %> 
-        <form action="MANAGERADD.jsp" method="post">
-        <button type="submit">Add product</button>
-        </form>
     
         <form action="main.jsp" method="post">
         <button type="submit">Back</button>
