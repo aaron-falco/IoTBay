@@ -10,10 +10,9 @@ CREATE TABLE USERS(
     firstName VARCHAR(20),
     lastName VARCHAR(20),
     password VARCHAR(20),
-    email VARCHAR(20),
-    address VARCHAR(100),
+    email VARCHAR(100),
     phoneNumber VARCHAR(10),
-    userType ENUM('customer', 'staff', 'admin'), 
+    userType INT, -- 0 = customer, 1 = staff, 2 = admins
     PRIMARY KEY (userId)
 );
 
@@ -44,19 +43,40 @@ CREATE TABLE USERLOGINRECORDS(
     PRIMARY KEY (loginRecordId)
 );
 
+CREATE TABLE PAYMENTINFO(
+    paymentInfoId VARCHAR(10),
+    paymentType VARCHAR(10),
+    cardNumber VARCHAR(16),
+    cvc VARCHAR(4),
+    expiryDate DATE,
+    paymentAmount FLOAT,
+    paymentDate DATE,
+    PRIMARY KEY (paymentInfoId)
+);
+
 -- Insert records into tables
-INSERT INTO USERS
-VALUES
-('101', 'First', 'Last', 'password', 'email@domain.com', '1 Street Avenue, Suburb 2000', '1234567890', 'customer'),
-('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
-('103', 'Regina', 'Smith', 'unsecure', 'regina@yourspace.com', '666 Road Street, Parramatta 3650', '1234567890', 'admin'),
-('104', 'Thor', 'Odinson', 'hammer', 'thunder@gods.com', '1234 Midgard Street, Midgard 0001', '1234567890', 'customer'),
-('105', 'Ark', 'Antos', 'myths', 'hero@athens.com', '1 Street Lane, Pymble 2221', '1234567890', 'staff'),
-('106', 'Maximum', 'Ride', 'fang', 'flying@theflock.com', '225 Nest Avenue, Tree 9999', '1234567890', 'admin'),
-('107', 'Veronica', 'Mars', 'private', 'veronica@mars.com', '96 Ripe Road, Sydney 2000', '1234567890', 'customer'),
-('108', 'Gohan', 'Son', 'books', 'gohan@sonfam.com', '123 Pod Street, West City 4562', '1234567890', 'staff'),
-('109', 'John', 'Jackson', 'different', 'john@jackson.com', '123 Street Avenue, Suburb 1234', '1234567890', 'admin'),
-('110', 'Jack', 'Johnson', 'different', 'jack@johnson.com', '321 Avenue Street, Brubus 4321', '1234567890', 'customer');
+INSERT INTO USERS (userId, firstName, lastName, password, email, phoneNumber, userType) VALUES
+('U0001', 'Alice', 'Smith', 'pass1234', 'alice.smith@example.com', '0412345678', 0),
+('U0002', 'Bob', 'Johnson', 'securepwd', 'bob.johnson@example.com', '0423456789', 1),
+('U0003', 'Carol', 'Williams', 'carolpass', 'carol.williams@example.com', '0434567890', 2),
+('U0004', 'David', 'Brown', 'davidpass', 'david.brown@example.com', '0445678901', 0),
+('U0005', 'Eva', 'Jones', 'evaj1234', 'eva.jones@example.com', '0456789012', 1),
+('U0006', 'Frank', 'Garcia', 'frankpwd', 'frank.garcia@example.com', '0467890123', 2),
+('U0007', 'Grace', 'Miller', 'gracepw1', 'grace.miller@example.com', '0478901234', 0),
+('U0008', 'Henry', 'Davis', 'henrypass', 'henry.davis@example.com', '0489012345', 1),
+('U0009', 'Ivy', 'Martinez', 'ivypasswd', 'ivy.martinez@example.com', '0490123456', 2),
+('U0010', 'Jack', 'Hernandez', 'jackpw88', 'jack.hernandez@example.com', '0411223344', 0),
+('U0011', 'Karen', 'Lopez', 'karen123', 'karen.lopez@example.com', '0422334455', 1),
+('U0012', 'Leo', 'Gonzalez', 'leo4321', 'leo.gonzalez@example.com', '0433445566', 2),
+('U0013', 'Mona', 'Wilson', 'monapw22', 'mona.wilson@example.com', '0444556677', 0),
+('U0014', 'Nick', 'Anderson', 'nickpass', 'nick.anderson@example.com', '0455667788', 1),
+('U0015', 'Olga', 'Thomas', 'olga3210', 'olga.thomas@example.com', '0466778899', 2),
+('U0016', 'Paul', 'Taylor', 'paulpw99', 'paul.taylor@example.com', '0477889900', 0),
+('U0017', 'Quinn', 'Moore', 'quinnpw', 'quinn.moore@example.com', '0488990011', 1),
+('U0018', 'Rose', 'Jackson', 'rosepass', 'rose.jackson@example.com', '0499001122', 2),
+('U0019', 'Sam', 'White', 'sampass1', 'sam.white@example.com', '0410333444', 0),
+('U0020', 'Tina', 'Harris', 'tina4567', 'tina.harris@example.com', '0420444555', 1);
+
 
 INSERT INTO PRODUCTS (productId, productName, productType, productDescription, quantity, price)
 VALUES 

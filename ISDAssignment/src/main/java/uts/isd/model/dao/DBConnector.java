@@ -15,7 +15,7 @@ public class DBConnector extends DB {
         Class.forName(driver);
 
         // Establish the connection to the database
-        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/usersdb", "isduser", "admin");
+        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/App", "isduser", "admin");
 
         // The URL+db will automatically append the database name, and `create=true` ensures
         // the database is created if it doesn't already exist.
