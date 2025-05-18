@@ -10,7 +10,7 @@ CREATE TABLE USERS(
     firstName VARCHAR(20),
     lastName VARCHAR(20),
     password VARCHAR(20),
-    email VARCHAR(20),
+    email VARCHAR(100),
     phoneNumber VARCHAR(10),
     userType INT, -- 0 = customer, 1 = staff, 2 = admins
     PRIMARY KEY (userId)
@@ -55,10 +55,8 @@ CREATE TABLE PAYMENTINFO(
 );
 
 -- Insert records into tables
-INSERT INTO USERS
-VALUES
-('101', 'First', 'Last', 'password', 'email@domain.com', '1234567890', 0);
--- ('102', 'James', 'Adams', '12345', 'james@email.com', '3 Avenue Road, Sydney 2222', '1234567890', 'staff'),
+-- INSERT INTO USERS VALUES ('1012', 'First', 'Last', 'password', 'email@domain.com', '1234567890', 0);
+INSERT INTO USERS VALUES ('666', 'James', 'Adams', '12345', 'james@email.com', '0412345678', 1);
 -- ('103', 'Regina', 'Smith', 'unsecure', 'regina@yourspace.com', '666 Road Street, Parramatta 3650', '1234567890', 'admin'),
 -- ('104', 'Thor', 'Odinson', 'hammer', 'thunder@gods.com', '1234 Midgard Street, Midgard 0001', '1234567890', 'customer'),
 -- ('105', 'Ark', 'Antos', 'myths', 'hero@athens.com', '1 Street Lane, Pymble 2221', '1234567890', 'staff'),
