@@ -67,28 +67,28 @@ public class TestDB {
         }
     }
 
-private void testAdd() {
-    try {
-        System.out.print("Product ID: ");
-        String id = in.nextLine();
-        System.out.print("Name: ");
-        String name = in.nextLine();
-        System.out.print("Type: ");
-        String type = in.nextLine(); 
-        System.out.print("Description: ");
-        String desc = in.nextLine();
-        System.out.print("Quantity: ");
-        int qty = Integer.parseInt(in.nextLine());
-        System.out.print("Price: ");
-        float price = Float.parseFloat(in.nextLine());
+    private void testAdd() {
+        try {
+            System.out.print("Product ID: ");
+            String id = in.nextLine();
+            System.out.print("Name: ");
+            String name = in.nextLine();
+            System.out.print("Type: ");
+            String type = in.nextLine(); 
+            System.out.print("Description: ");
+            String desc = in.nextLine();
+            System.out.print("Quantity: ");
+            int qty = Integer.parseInt(in.nextLine());
+            System.out.print("Price: ");
+            float price = Float.parseFloat(in.nextLine());
 
-        db.addProduct(id, name, type, desc, qty, price); 
-        System.out.println("Product added.");
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-        System.out.println("SQL Error adding product.");
+            db.addProduct(id, name, type, desc, qty, price); 
+            System.out.println("Product added.");
+        } catch (SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQL Error adding product.");
+        }
     }
-}
 
     private void testRead() {
         try {
@@ -141,28 +141,28 @@ private void testAdd() {
         }
     }
 
-private void showAll() {
-    try {
-        ArrayList<Product> products = db.fetchProducts();
-        System.out.println("Products Table:");
-        System.out.printf("%-10s %-25s %-15s %-40s %-10s %-10s\n", 
-            "ID", "Name", "Type", "Description", "Quantity", "Price");
-
-        for (Product product : products) {
-            System.out.printf("%-10s %-25s %-15s %-40s %-10d %-10.2f\n", 
-                product.getProductId(), 
-                product.getProductName(), 
-                product.getProductType(), 
-                product.getProductDescription(), 
-                product.getQuantity(), 
-                product.getPrice());
+    private void showAll() {
+        try {
+            ArrayList<Product> products = db.fetchProducts();
+            System.out.println("Products Table:");
+            System.out.printf("%-10s %-25s %-15s %-40s %-10s %-10s\n", 
+                "ID", "Name", "Type", "Description", "Quantity", "Price");
+            
+            for (Product product : products) {
+                System.out.printf("%-10s %-25s %-15s %-40s %-10d %-10.2f\n", 
+                    product.getProductId(), 
+                    product.getProductName(), 
+                    product.getProductType(), 
+                    product.getProductDescription(), 
+                    product.getQuantity(), 
+                    product.getPrice());
+            }
+            System.out.println();
+        } catch (SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQL Error fetching products.");
         }
-        System.out.println();
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-        System.out.println("SQL Error fetching products.");
     }
-}
 
 
 }

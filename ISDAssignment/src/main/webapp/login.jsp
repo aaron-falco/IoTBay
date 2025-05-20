@@ -26,7 +26,14 @@
 
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" required><br><br>
-
+            <%
+                if(session.getAttribute("loginAttemptFailed") != null){
+                    %>
+                        <p style="color: red"> Invalid login details. Please try again. <p>
+                        <br><br>
+                    <%
+                }
+            %>
             <input type="submit" value="Login">
         </form>
         <br><br>
