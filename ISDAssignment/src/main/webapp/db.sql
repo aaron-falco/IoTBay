@@ -38,8 +38,10 @@ CREATE TABLE ORDERS(
 CREATE TABLE USERLOGINRECORDS(
     loginRecordId VARCHAR(10),
     userId VARCHAR(10),
-    loginDate DATE,
-    loginTime TIME,
+    loginDate VARCHAR(10), -- Format: dd/mm/yyyy
+    loginTime VARCHAR(5), -- Format: hh:mm
+    logoutDate VARCHAR(10), -- Format: dd/mm/yyyy
+    logoutTime VARCHAR(5), -- Format: hh:mm
     PRIMARY KEY (loginRecordId)
 );
 
@@ -53,6 +55,11 @@ CREATE TABLE PAYMENTINFO(
     paymentDate DATE,
     PRIMARY KEY (paymentInfoId)
 );
+
+INSERT INTO USERLOGINRECORDS VALUES
+('LR0001', 'U0001', '01/01/2025', '10:23', '01/01/2025', '11:56'),
+('LR0002', 'U0001', '01/01/2025', '13:01', '01/01/2025', '15:43'),
+('LR0003', 'U0001', '05/01/2025', '14:35', '01/01/2025', '17:00');
 
 -- Insert records into tables
 INSERT INTO USERS (userId, firstName, lastName, password, email, phoneNumber, userType) VALUES

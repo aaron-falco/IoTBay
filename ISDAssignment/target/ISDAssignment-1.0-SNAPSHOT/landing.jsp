@@ -3,7 +3,8 @@
     Created on : 28 Mar 2025, 2:19:40 pm
     Author     : Nur Fatini Jamla Norlijam
 --%>
-
+<%@ page import="java.util.*, uts.isd.model.dao.*, uts.isd.Product" %>
+<%@ page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,19 @@
         <link rel="stylesheet" href="IoTBayStyles.css">
     </head>
     <body>
+        <%
+            try{
+                // Connect to database
+                DBConnector connector = new DBConnector();
+                Connection conn = connector.openConnection();
+                DBManager db = new DBManager(conn);
+                
+                session.setAttribute("db", db);
+            }
+            catch (Exception ex){
+                out.print(ex.getMessage());
+            }
+        %>
         <div class="defaultDivStyle">
             <h1>Welcome to IoTBay!</h1>
             <p>Start your journey here – click below to register or login.</p>
