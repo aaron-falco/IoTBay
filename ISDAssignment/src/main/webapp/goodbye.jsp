@@ -13,9 +13,10 @@
         <%
             try{
                 // Connect to database
-                DBConnector connector = new DBConnector();
-                Connection conn = connector.openConnection();
-                DBManager db = new DBManager(conn);
+//                DBConnector connector = new DBConnector();
+//                Connection conn = connector.openConnection();
+//                DBManager db = new DBManager(conn);
+                DBManager db = (DBManager) session.getAttribute("db");
                 
                 UserLoginRecord record = (UserLoginRecord) session.getAttribute("loginRecord");
                 record.setLogoutDateTime();
@@ -23,7 +24,7 @@
                 db.updateLoginRecord(record.getLoginRecordId(), record.getLogoutDate(), record.getLogoutTime());
                 
                 // End session
-                conn.close();
+                db.disconnect();
                 session.invalidate();
                 response.sendRedirect("landing.jsp");
             }

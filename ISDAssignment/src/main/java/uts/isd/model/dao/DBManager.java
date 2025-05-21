@@ -16,6 +16,15 @@ public class DBManager {
         st = conn.createStatement();
         this.conn = conn;
     }
+    
+    public void disconnect(){
+        try{
+            conn.close();
+        }
+        catch (SQLException ex){
+            System.out.print(ex.getMessage());
+        }
+    }
 
     public Product findProduct(String productId) throws SQLException {
         String fetch = "SELECT * FROM ISDUSER.Products WHERE productId = '" + productId + "'";
