@@ -7,6 +7,10 @@ import uts.isd.Order;
 import uts.isd.User;
 import java.sql.*;
 import java.util.ArrayList;
+import uts.isd.PaymentInfo;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class DBManager {
     private Statement st;
@@ -343,5 +347,106 @@ public class DBManager {
         String query = "UPDATE ISDUSER.ORDERS SET orderStatus = 'Cancelled' WHERE orderCustomerId = '" + userId + "'";
         st.executeUpdate(query);
     }
+<<<<<<< HEAD
+    return results;
+}
+public void addPayment(PaymentInfo payment) throws SQLException {
+    String query = "INSERT INTO Payments (paymentInfoId, ORDERID, paymentType, cardNumber, cvc, expiryDate, paymentAmount, paymentDate) " +
+                   "VALUES ('" + payment.getPaymentInfoId() + "', '" + payment.getOrderId() + "', '" + payment.getPaymentType() + "', '" +
+                   payment.getCardNumber() + "', '" + payment.getCvc() + "', '" + payment.getExpiryDate() + "', " +
+                   payment.getPaymentAmount() + ", '" + payment.getPaymentDate() + "')";
+    
+    Statement st = conn.createStatement();
+    st.executeUpdate(query);
+}
+
+
+    // Read (Retrieve by payment ID)
+    public PaymentInfo getPaymentById(String paymentInfoId) throws SQLException {
+        String query = "SELECT * FROM Payments WHERE paymentInfoId = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, paymentInfoId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return extractPaymentFromResultSet(rs);
+            }
+        }
+        return null;
+    }
+
+    // Read (All payments for an order/user)
+    public ArrayList<PaymentInfo> getPaymentsByOrderId(String orderId) throws SQLException {
+        String query = "SELECT * FROM Payments WHERE orderId = ?";
+        ArrayList<PaymentInfo> payments = new ArrayList<>();
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, orderId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                payments.add(extractPaymentFromResultSet(rs));
+            }
+        }
+        return payments;
+    }
+
+    // Update
+    public void updatePayment(PaymentInfo payment) throws SQLException {
+        String query = "UPDATE Payments SET paymentType=?, cardNumber=?, cvc=?, expiryDate=?, paymentAmount=?, paymentDate=? " +
+                       "WHERE paymentInfoId=?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, payment.getPaymentType());
+            stmt.setString(2, payment.getCardNumber());
+            stmt.setString(3, payment.getCvc());
+            stmt.setString(4, payment.getExpiryDate());
+            stmt.setFloat(5, payment.getPaymentAmount());
+            stmt.setString(6, payment.getPaymentDate());
+            stmt.setString(7, payment.getPaymentInfoId());
+            stmt.executeUpdate();
+        }
+    }
+
+    // Delete
+    public void deletePayment(String paymentInfoId) throws SQLException {
+        String query = "DELETE FROM Payments WHERE paymentInfoId = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, paymentInfoId);
+            stmt.executeUpdate();
+        }
+    }
+
+    // Helper method
+    private PaymentInfo extractPaymentFromResultSet(ResultSet rs) throws SQLException {
+        PaymentInfo payment = new PaymentInfo();
+        payment.setPaymentInfoId(rs.getString("paymentInfoId"));
+        payment.setOrderId(rs.getString("orderId"));
+        payment.setPaymentType(rs.getString("paymentType"));
+        payment.setCardNumber(rs.getString("cardNumber"));
+        payment.setCvc(rs.getString("cvc"));
+        payment.setExpiryDate(rs.getString("expiryDate"));
+        payment.setPaymentAmount(rs.getFloat("paymentAmount"));
+        payment.setPaymentDate(rs.getString("paymentDate"));
+        return payment;
+    }
+    public List<PaymentInfo> fetchAllPayments() throws SQLException {
+    String query = "SELECT * FROM PAYMENTS";
+    Statement st = conn.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    List<PaymentInfo> list = new ArrayList<>();
+    while (rs.next()) {
+        PaymentInfo p = new PaymentInfo();
+        p.setPaymentInfoId(rs.getString("paymentInfoId"));
+        p.setOrderId(rs.getString("orderId"));
+        p.setPaymentType(rs.getString("paymentType"));
+        p.setCardNumber(rs.getString("cardNumber"));
+        p.setCvc(rs.getString("cvc"));
+        p.setExpiryDate(rs.getString("expiryDate"));
+        p.setPaymentAmount(rs.getFloat("paymentAmount"));
+        p.setPaymentDate(rs.getString("paymentDate"));
+        list.add(p);
+    }
+    return list;
+}
+=======
+>>>>>>> main
 }
 

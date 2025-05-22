@@ -32,8 +32,10 @@
 %>
 
 
-<form action="AddPayment" method="post">
-
+<form action="paymentProcessing.jsp" method="post">
+    <label for="paymentId">Payment ID:</label><br>
+    <input type="text" name="paymentId" required><br><br>
+    
     <label for="orderId">Order ID:</label><br>
     <input type="text" name="orderId" required><br><br>
     
@@ -62,6 +64,10 @@
     <input type="text" name="paymentDate" required><br><br>
 
     <input type="submit" value="Submit Payment">
+    
+</form>
+<form action="main.jsp" method="get">
+    <button type="submit">Back</button>
 </form>
     </body>
 </html>

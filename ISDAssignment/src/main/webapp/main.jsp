@@ -58,6 +58,18 @@
     </form>
 <% } %>
 
+<<<<<<< HEAD
+    <form action="Catalog.jsp" method="post">
+        <button type="submit">Catalog</button>
+    </form>
+    <form action="logout.jsp" method="post">
+        <button type="submit">Logout</button>
+    </form>
+    <form action="addPayment.jsp" method="post">
+        <button type="submit">Add Payment</button>
+    </form>
+=======
+>>>>>>> main
     <%
         }
     %>
