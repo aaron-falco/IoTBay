@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" href="IoTBayStyles.css">
+        <link rel="stylesheet" href="styles.css">
         <script>
             function cancel() {
                 window.location.href = 'landing.jsp';

@@ -15,18 +15,8 @@ import java.time.format.DateTimeFormatter;
 public class UserLoginRecord implements Serializable {
     
     private static class DateTimeGenerator{
-//        LocalDateTime myObj = LocalDateTime.now(); // Create a date object
-//        
-//        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
-//        String formattedDate = myObj.format(format);
-//        System.out.println(formattedDate); // Display the current date
-//        
-//        format = DateTimeFormatter.ofPattern("hh:mm");
-//        formattedDate = myObj.format(format);
-//        System.out.println(formattedDate); // Display the current time
-        
         public static String currentDate(){
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");        
             return LocalDateTime.now().format(format);
         }
         

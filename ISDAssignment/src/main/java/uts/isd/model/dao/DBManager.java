@@ -97,8 +97,7 @@ public class DBManager {
                 ));
             }
         }
-        if(records.isEmpty()) { return null; }
-        else { return records; }
+        return records;
     }
     
     public ArrayList<UserLoginRecord> findLoginRecordFromUserIdAndDate(String searchUserId, String searchDate) throws SQLException{
@@ -120,8 +119,7 @@ public class DBManager {
                 ));
             }
         }
-        if(records.isEmpty()) { return null; }
-        else { return records; }
+        return records;
     }
 
     public void addProduct(String id, String name, String type, String desc, int quantity, float price) throws SQLException {
