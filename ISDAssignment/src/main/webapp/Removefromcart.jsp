@@ -5,13 +5,16 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@ page import="uts.isd.CartItem" %>
+<%@ page import="java.util.ArrayList" %>
+<%
+    String productId = request.getParameter("productId");
+    ArrayList<CartItem> cart = (ArrayList<CartItem>) session.getAttribute("cart");
+
+    if (cart != null && productId != null) {
+        cart.removeIf(item -> item.getProduct().getProductId().equals(productId));
+        session.setAttribute("cart", cart);
+    }
+
+    response.sendRedirect("cart.jsp");
+%>

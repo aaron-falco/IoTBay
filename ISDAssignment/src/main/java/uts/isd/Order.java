@@ -18,9 +18,12 @@ public class Order implements Serializable{
     private int quantity;
 
     public Order(String id, String customerId, String productId, float price, int qty) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      this.orderId = id;
+        this.orderCustomerId = customerId;
+        this.orderProductId = productId;
+        this.quantity = qty;
+        this.orderPrice = price;
     }
-
     public String getOrderId() {
         return orderId;
     }
