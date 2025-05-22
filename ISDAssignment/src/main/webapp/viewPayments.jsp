@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="IoTBayStyles.css">
         <div style="width: 400px; margin: 0 auto;">
     </head>
+    
     <body>
         <h2>All Payments</h2>
 
