@@ -7,7 +7,7 @@ import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.DBManager;
 import uts.isd.Product;
 
-public class TestDB {
+public class TestProductDB {
 
     private static Scanner in = new Scanner(System.in);
     private DBManager db;
@@ -15,24 +15,24 @@ public class TestDB {
 
     public static void main(String[] args) {
         try {
-            TestDB testDB = new TestDB();
+            TestProductDB testDB = new TestProductDB();
             if (testDB.db != null) {
                 testDB.runQueries();
             } else {
                 System.out.println("Database not initialized.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public TestDB() {
+    public TestProductDB() {
         try {
             DBConnector connector = new DBConnector();
             conn = connector.openConnection();
             db = new DBManager(conn);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -85,7 +85,7 @@ public class TestDB {
             db.addProduct(id, name, type, desc, qty, price); 
             System.out.println("Product added.");
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error adding product.");
         }
     }
@@ -101,7 +101,7 @@ public class TestDB {
                 System.out.println("Product not found.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error reading product.");
         }
     }
@@ -124,7 +124,7 @@ public class TestDB {
             db.updateProduct(id, name,type, desc, qty, price);
             System.out.println("Product updated.");
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error updating product.");
         }
     }
@@ -136,7 +136,7 @@ public class TestDB {
             db.deleteProduct(id);
             System.out.println("Product deleted.");
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error deleting product.");
         }
     }
@@ -159,7 +159,7 @@ public class TestDB {
             }
             System.out.println();
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error fetching products.");
         }
     }

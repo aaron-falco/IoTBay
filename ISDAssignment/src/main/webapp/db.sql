@@ -96,7 +96,17 @@ VALUES
 ('P007', 'Air Quality Monitor', 'Monitor', 'Tracks CO2, VOCs, and PM2.5 for better home air quality.', 60, 129.00),
 ('P008', 'IoT Light Strip', 'Lighting', 'RGB light strip with app control and voice assistant support.', 120, 34.99),
 ('P009', 'Smart Speaker Hub', 'Hub', 'Centralized control for IoT devices with built-in voice assistant.', 90, 179.00),
-('P010', 'Motion Sensor', 'Sensor', 'PIR motion sensor for home automation and security systems.', 110, 19.95);
+('P010', 'Motion Sensor', 'Sensor', 'PIR motion sensor for home automation and security systems.', 110, 19.95),
+('P011', 'Smart Smoke Detector', 'Sensor', 'WiFi-enabled smoke and carbon monoxide detector with mobile alerts.', 80, 59.99),
+('P012', 'Smart Garage Opener', 'Controller', 'Smart garage door controller with real-time open/close status.', 45, 99.95),
+('P013', 'Smart Sprinkler Controller', 'Controller', 'Automated irrigation scheduling with weather-based adjustments.', 30, 149.00),
+('P014', 'Smart Mirror', 'Display', 'Touch-enabled mirror with weather, calendar, and news display.', 20, 299.99),
+('P015', 'Energy Monitoring System', 'Monitor', 'Whole-home energy usage monitor with detailed analytics.', 25, 199.00),
+('P016', 'IoT Pet Feeder', 'Appliance', 'WiFi-controlled pet feeder with portion scheduling and video camera.', 35, 124.95),
+('P017', 'Smart Window Sensor', 'Sensor', 'Contact sensor for windows with tamper detection and mobile alerts.', 100, 18.50),
+('P018', 'Smart Blinds Controller', 'Controller', 'Automated blinds opener with schedule and light sensor integration.', 40, 89.99),
+('P019', 'IoT Coffee Maker', 'Appliance', 'Schedule coffee brewing via app or voice assistant integration.', 25, 149.99),
+('P020', 'Smart Water Valve', 'Valve', 'Remote-controlled valve for automatic shutoff during leaks.', 50, 109.00);
 
 -- Examples of Table Interactions:
 -- Insert into Users Table

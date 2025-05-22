@@ -22,7 +22,7 @@ public class TestLoginRecordDB {
                 System.out.println("Database not initialized.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -32,7 +32,7 @@ public class TestLoginRecordDB {
             conn = connector.openConnection();
             db = new DBManager(conn);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
 
@@ -87,7 +87,7 @@ public class TestLoginRecordDB {
             db.addLoginRecord(u.getLoginRecordId(), u.getUserId(), u.getLoginDate(), u.getLoginTime(), u.getLogoutDate(), u.getLogoutTime());
             System.out.println("Login Record added.");
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error adding login record.");
         }
     }
@@ -152,7 +152,7 @@ public class TestLoginRecordDB {
             }
         }
         catch (SQLException ex){
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error reading user.");
         }
     }
@@ -170,7 +170,7 @@ public class TestLoginRecordDB {
             System.out.println("Record updated.");            
         }
         catch (SQLException ex){
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error updating record.");
         }
     }
@@ -184,7 +184,7 @@ public class TestLoginRecordDB {
             System.out.println("Record deleted.");            
         }
         catch (SQLException ex){
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error deleting record.");
         }
     }
@@ -194,7 +194,7 @@ public class TestLoginRecordDB {
             db.getRowCountUserLoginRecords();
         }
         catch (SQLException ex){
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error deleting record.");
         }
     }
