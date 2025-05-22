@@ -29,6 +29,17 @@
         <url-pattern>/staff</url-pattern>
     </servlet-mapping>
 
+    <!-- SupplierServlet Definition -->
+    <servlet>
+        <servlet-name>SupplierServlet</servlet-name>
+        <servlet-class>controller.SupplierServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SupplierServlet</servlet-name>
+        <url-pattern>/supplier</url-pattern>
+    </servlet-mapping>
+
     <!-- Session Config -->
     <session-config>
         <session-timeout>30</session-timeout>
