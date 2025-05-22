@@ -57,7 +57,7 @@ CREATE TABLE PAYMENTINFO(
     PRIMARY KEY (paymentInfoId)
 );
 
-<<<<<<< HEAD
+
 CREATE TABLE PAYMENTS (
     paymentInfoId VARCHAR(50) PRIMARY KEY,
     ORDERID VARCHAR(50),
@@ -68,12 +68,12 @@ CREATE TABLE PAYMENTS (
     paymentAmount FLOAT,
     paymentDate VARCHAR(20)
 );
-=======
+
 INSERT INTO USERLOGINRECORDS VALUES
 ('UR1', 'U1', '01/01/2025', '10:23', '01/01/2025', '11:56'),
 ('UR2', 'U1', '01/01/2025', '13:01', '01/01/2025', '15:43'),
 ('UR3', 'U1', '05/01/2025', '14:35', '01/01/2025', '17:00');
->>>>>>> main
+
 
 -- Insert records into tables
 INSERT INTO USERS (userId, firstName, lastName, password, email, phoneNumber, userType) VALUES

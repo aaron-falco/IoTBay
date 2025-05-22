@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, uts.isd.model.dao.DBManager, uts.isd.PaymentInfo" %>
-<%@ page import="javax.servlet.http.*, javax.servlet.*" %>
+<%@ page import="java.util.*, uts.isd.model.dao.*, uts.isd.PaymentInfo" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +19,12 @@
         <h2>All Payments</h2>
 
 <%
-    DBManager manager = (DBManager) session.getAttribute("manager");
+    try{
+        // Connect to database
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.openConnection();
+        DBManager manager = new DBManager(conn);
+
 
     if (manager != null) {
         List<PaymentInfo> payments = manager.fetchAllPayments();
@@ -49,8 +54,12 @@
         } else {
             out.println("<p>No payments found.</p>");
         }
-    } else {
-        out.println("<p style='color:red;'>DBManager not found in session.</p>");
+        } else {
+            out.println("<p style='color:red;'>DBManager not found in session.</p>");
+        }
+    }
+    catch (Exception ex){
+        out.print(ex.getMessage());
     }
 %>
     </table>
