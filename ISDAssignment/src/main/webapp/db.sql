@@ -32,6 +32,7 @@ CREATE TABLE ORDERS(
     orderProductId VARCHAR(10),
     orderPrice FLOAT,
     orderQuantity INTEGER,
+    orderStatus VARCHAR(20), -- Can be Unprocessed, Processed, Completed or Cancelled
     PRIMARY KEY (orderId)
 );
 

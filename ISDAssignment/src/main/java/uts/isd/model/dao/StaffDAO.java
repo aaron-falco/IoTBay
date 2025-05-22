@@ -1,4 +1,4 @@
-package model.dao;
+package uts.isd.model.dao;
 
 import java.sql.*;
 import java.util.*;

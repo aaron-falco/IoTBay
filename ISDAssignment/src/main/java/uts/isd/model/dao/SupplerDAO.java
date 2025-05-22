@@ -1,12 +1,12 @@
-package model.dao;
+package uts.isd.model.dao;
 
 import java.sql.*;
 import java.util.*;
 
-public class SupplierDAO {
+public class SupplerDAO {
     private Connection conn;
 
-    public SupplierDAO(Connection conn) {
+    public SupplerDAO(Connection conn) {
         this.conn = conn;
     }
 

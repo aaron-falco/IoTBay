@@ -1,4 +1,4 @@
-package model.dao;
+package uts.isd.model.dao;
 
 public class Supplier {
     public int id;
