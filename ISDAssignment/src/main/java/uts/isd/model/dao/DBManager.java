@@ -250,5 +250,74 @@ public class DBManager {
         
         return count;
     }
+    public Order findOrder(String orderId) throws SQLException {
+    String fetch = "SELECT * FROM ISDUSER.Orders WHERE orderId = '" + orderId + "'";
+    ResultSet rs = st.executeQuery(fetch);
+
+    while (rs.next()) {
+        String id = rs.getString(1);
+        if (id.equals(orderId)) {
+            String customerId = rs.getString(2);
+            String productId = rs.getString(3);
+            float price = rs.getFloat(4);
+            int qty = rs.getInt(5);
+            return new Order(id, customerId, productId, price, qty);
+        }
+    }
+    return null;
+}
+public void addOrder(String id, String customerId, String productId, float price, int quantity) throws SQLException {
+    String query = "INSERT INTO ISDUSER.Orders VALUES ('" + id + "', '" + customerId + "', '" + productId + "', " + price + ", " + quantity + ")";
+    st.executeUpdate(query);
+}
+public void updateOrder(String id, String customerId, String productId, float price, int quantity) throws SQLException {
+    String query = "UPDATE ISDUSER.Orders SET orderCustomerId = '" + customerId + "', orderProductId = '" + productId + "', orderPrice = " + price + ", orderQuantity = " + quantity + " WHERE orderId = '" + id + "'";
+    st.executeUpdate(query);
+}
+public void deleteOrder(String id) throws SQLException {
+    st.executeUpdate("DELETE FROM ISDUSER.Orders WHERE orderId = '" + id + "'");
+}
+public ArrayList<Order> fetchOrders() throws SQLException {
+    String fetch = "SELECT * FROM ISDUSER.Orders";
+    ResultSet rs = st.executeQuery(fetch);
+    ArrayList<Order> temp = new ArrayList<>();
+
+    while (rs.next()) {
+        String id = rs.getString(1);
+        String customerId = rs.getString(2);
+        String productId = rs.getString(3);
+        float price = rs.getFloat(4);
+        int qty = rs.getInt(5);
+        temp.add(new Order(id, customerId, productId, price, qty));
+    }
+    return temp;
+}
+public boolean checkOrder(String id) throws SQLException {
+    String fetch = "SELECT * FROM ISDUSER.Orders WHERE orderId = '" + id + "'";
+    ResultSet rs = st.executeQuery(fetch);
+
+    while (rs.next()) {
+        if (rs.getString(1).equals(id)) {
+            return true;
+        }
+    }
+    return false;
+}
+public ArrayList<Order> searchOrdersByCustomer(String customerId) throws SQLException {
+    String query = "SELECT * FROM ISDUSER.Orders WHERE orderCustomerId = '" + customerId + "'";
+    ResultSet rs = st.executeQuery(query);
+    ArrayList<Order> results = new ArrayList<>();
+
+    while (rs.next()) {
+        String id = rs.getString("orderId");
+        String productId = rs.getString("orderProductId");
+        float price = rs.getFloat("orderPrice");
+        int qty = rs.getInt("orderQuantity");
+
+        results.add(new Order(id, customerId, productId, price, qty));
+    }
+    return results;
+}
+
 }
 
