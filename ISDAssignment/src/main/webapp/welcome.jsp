@@ -52,6 +52,7 @@
                         
                         //conn.close();
                         response.sendRedirect("main.jsp");
+                        
                         %>
                         <div class="defaultDivStyle">
                             <p>If not automatically redirected click <a href="main.jsp">HERE</a>.</p>
