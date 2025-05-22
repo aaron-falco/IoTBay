@@ -53,14 +53,11 @@
     <form action="MANAGERADD.jsp" method="post">
         <button type="submit">Edit Catalog</button>
     </form>
+    <form action="ORDERMANAGEMENT.jsp" method="post">
+        <button type="submit">Order Management</button>
+    </form>
 <% } %>
 
-<!--    <form action="Catalog.jsp" method="post">
-        <button type="submit">Catalog</button>
-    </form>
-    <form action="logout.jsp" method="post">
-        <button type="submit">Logout</button>
-    </form>-->
     <%
         }
     %>
