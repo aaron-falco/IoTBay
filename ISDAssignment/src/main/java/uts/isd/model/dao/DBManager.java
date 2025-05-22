@@ -2,11 +2,9 @@ package uts.isd.model.dao;
 
 import uts.isd.Product;
 import uts.isd.UserLoginRecord;
-import uts.isd.PaymentInfo;
 import uts.isd.Order;
 import uts.isd.User;
 import java.sql.*;
-import java.util.ArrayList;
 import uts.isd.PaymentInfo;
 import java.util.List;
 import java.util.ArrayList;
@@ -285,7 +283,8 @@ public class DBManager {
             String productId = rs.getString(3);
             float price = rs.getFloat(4);
             int qty = rs.getInt(5);
-            return new Order(id, customerId, productId, price, qty);
+            String status = rs.getString (6);
+            return new Order(id, customerId, productId, price, qty, status);
         }
     }
     return null;
@@ -312,7 +311,8 @@ public class DBManager {
             String productId = rs.getString(3);
             float price = rs.getFloat(4);
             int qty = rs.getInt(5);
-            temp.add(new Order(id, customerId, productId, price, qty));
+            String status = rs.getString (6);
+            temp.add(new Order(id, customerId, productId, price, qty, status));
         }
         return temp;
     }
@@ -337,8 +337,9 @@ public class DBManager {
             String productId = rs.getString("orderProductId");
             float price = rs.getFloat("orderPrice");
             int qty = rs.getInt("orderQuantity");
+            String status = rs.getString("orderStatus");
 
-            results.add(new Order(id, customerId, productId, price, qty));
+            results.add(new Order(id, customerId, productId, price, qty,status));
         }
         return results;
     }
