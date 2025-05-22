@@ -9,9 +9,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Landing</title>
-        <link rel="stylesheet" href="IoTBayStyles.css">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <%
