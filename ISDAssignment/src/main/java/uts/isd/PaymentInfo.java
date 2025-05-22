@@ -17,7 +17,8 @@ public class PaymentInfo implements Serializable {
     private String expiryDate;
     private float paymentAmount;
     private String paymentDate;
-
+    private String orderId;
+    
     public String getPaymentInfoId() {
         return paymentInfoId;
     }
@@ -72,5 +73,13 @@ public class PaymentInfo implements Serializable {
 
     public void setPaymentDate(String paymentDate) {
         this.paymentDate = paymentDate;
+    }
+    
+    public String getOrderId() {
+        return orderId;
+    }
+    
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }
