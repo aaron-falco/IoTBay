@@ -67,6 +67,9 @@
     <form action="addPayment.jsp" method="post">
         <button type="submit">Add Payment</button>
     </form>
+    <form action="viewPayments.jsp" method="post">
+        <button type="submit">View Payments</button>
+    </form>
 
     <%
         }

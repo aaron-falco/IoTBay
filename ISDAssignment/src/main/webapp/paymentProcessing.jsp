@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="IoTBayStyles.css">
+        <link rel="stylesheet" href="styles.css">
         <div style="width: 400px; margin: 0 auto;">
     </head>
     <body>

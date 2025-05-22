@@ -12,58 +12,55 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Payments</title>
-        <link rel="stylesheet" href="IoTBayStyles.css">
+        <link rel="stylesheet" href="styles.css">
         <div style="width: 400px; margin: 0 auto;">
     </head>
     
     <body>
-        <h2>All Payments</h2>
+        <h2></h2>
 
 <%
-    try{
+    try {
         // Connect to database
         DBConnector connector = new DBConnector();
         Connection conn = connector.openConnection();
         DBManager manager = new DBManager(conn);
 
+        if (manager != null) {
+            List<PaymentInfo> payments = manager.fetchAllPayments();
 
-    if (manager != null) {
-        List<PaymentInfo> payments = manager.fetchAllPayments();
+            if (payments != null && !payments.isEmpty()) {
+%>
+<div style="border: 2px solid #333; border-radius: 8px; padding: 20px; background-color: white; width: 90%; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center;">All Payments</h2>
+</div>
 
-        if (payments != null && !payments.isEmpty()) {
-%>
-        <table>
-            <tr>
-                <th>ID</th><th>Order ID</th><th>Type</th><th>Card</th>
-                <th>CVC</th><th>Expiry</th><th>Amount</th><th>Date</th>
-            </tr>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 10px 50px;">
 <%
-            for (PaymentInfo p : payments) {
+    for (PaymentInfo p : payments) {
 %>
-            <tr>
-                <td><%= p.getPaymentInfoId() %></td>
-                <td><%= p.getOrderId() %></td>
-                <td><%= p.getPaymentType() %></td>
-                <td><%= p.getCardNumber() %></td>
-                <td><%= p.getCvc() %></td>
-                <td><%= p.getExpiryDate() %></td>
-                <td><%= p.getPaymentAmount() %></td>
-                <td><%= p.getPaymentDate() %></td>
-            </tr>
+    <div style="border: 1px solid #ccc; padding: 12px; width: 250px; border-radius: 6px; background-color: #f9f9f9;">
+        <p><strong>ID:</strong> <%= p.getPaymentInfoId() %></p>
+        <p><strong>Order ID:</strong> <%= p.getOrderId() %></p>
+        <p><strong>Type:</strong> <%= p.getPaymentType() %></p>
+        <p><strong>Card:</strong> <%= p.getCardNumber() %></p>
+        <p><strong>CVC:</strong> <%= p.getCvc() %></p>
+        <p><strong>Expiry:</strong> <%= p.getExpiryDate() %></p>
+        <p><strong>Amount:</strong> <%= p.getPaymentAmount() %></p>
+        <p><strong>Date:</strong> <%= p.getPaymentDate() %></p>
+    </div>
 <%
+                }
+            } else {
+                out.println("<p>No payments found.</p>");
             }
         } else {
-            out.println("<p>No payments found.</p>");
+            out.println("<p style='color:red;'>DBManager not found.</p>");
         }
-        } else {
-            out.println("<p style='color:red;'>DBManager not found in session.</p>");
-        }
-    }
-    catch (Exception ex){
-        out.print(ex.getMessage());
+    } catch (Exception e) {
+        out.println("<p style='color:red;'>Error: " + e.getMessage() + "</p>");
     }
 %>
-    </table>
 
     <br>
     <form action="addPayment.jsp" method="get">
