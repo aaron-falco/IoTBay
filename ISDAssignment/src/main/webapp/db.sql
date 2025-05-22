@@ -54,6 +54,17 @@ CREATE TABLE PAYMENTINFO(
     PRIMARY KEY (paymentInfoId)
 );
 
+CREATE TABLE PAYMENTS (
+    paymentInfoId VARCHAR(50) PRIMARY KEY,
+    ORDERID VARCHAR(50),
+    paymentType VARCHAR(50),
+    cardNumber VARCHAR(20),
+    cvc VARCHAR(10),
+    expiryDate VARCHAR(10),
+    paymentAmount FLOAT,
+    paymentDate VARCHAR(20)
+);
+
 -- Insert records into tables
 INSERT INTO USERS (userId, firstName, lastName, password, email, phoneNumber, userType) VALUES
 ('U0001', 'Alice', 'Smith', 'pass1234', 'alice.smith@example.com', '0412345678', 0),

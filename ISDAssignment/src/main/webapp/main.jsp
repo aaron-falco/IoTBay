@@ -56,6 +56,9 @@
     <form action="logout.jsp" method="post">
         <button type="submit">Logout</button>
     </form>
+    <form action="addPayment.jsp" method="post">
+        <button type="submit">Add Payment</button>
+    </form>
     <%
         }
     %>
