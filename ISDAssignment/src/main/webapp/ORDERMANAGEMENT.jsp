@@ -140,5 +140,8 @@
             }
         %>
     </table>
+    <form action="main.jsp" method="get" style="display: inline;">
+        <input type="submit" value="Main Page" />
+    </form>
 </body>
 </html>
