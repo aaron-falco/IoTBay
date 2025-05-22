@@ -30,6 +30,7 @@
         <ul>
             <li><a href="login.jsp">Login</a></li>
             <li><a href="register.jsp">Register</a></li>
+            <li><a href="Catalog.jsp">Catalog</a></li>
         </ul>
         <div class="defaultDivStyle">
             <h1>Welcome to IoTBay!</h1>

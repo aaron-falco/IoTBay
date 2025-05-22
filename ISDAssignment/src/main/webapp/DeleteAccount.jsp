@@ -18,6 +18,7 @@
             try{
                 DBManager db = (DBManager) session.getAttribute("db");
                 User user = (User) session.getAttribute("user");
+                db.cancelOrdersByUserId(user.getUserId());
                 db.deleteUser(user.getUserId());
                 db.disconnect();
                 session.invalidate();

@@ -17,9 +17,6 @@
         <%
             try {
                 // Connect to database
-//                DBConnector connector = new DBConnector();
-//                Connection conn = connector.openConnection();
-//                DBManager db = new DBManager(conn);
                   DBManager db = (DBManager) session.getAttribute("db");
                 
                 // If POST form sent to page     
@@ -32,7 +29,6 @@
                     // If user with email doesn't exist or if the password doesn't match
                     if(user == null || !password.equals(user.getPassword())){
                         session.setAttribute("loginAttemptFailed", true);
-                        //conn.close();
                         response.sendRedirect("login.jsp");
                         %>
                         <div class="defaultDivStyle">

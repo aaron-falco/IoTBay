@@ -20,6 +20,15 @@ public class User implements Serializable{
         this.phoneNumber = phoneNumber;
         this.userType = userType;
     }
+    public User() {
+        this.userId = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.password = "";
+        this.email = "";
+        this.phoneNumber = "";
+        this.userType = 0;
+    }
 
     public String getUserId() {
         return userId;
