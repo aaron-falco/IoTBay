@@ -17,6 +17,13 @@ public class Order implements Serializable{
     private float orderPrice;
     private int quantity;
 
+    public Order(String id, String customerId, String productId, float price, int qty) {
+      this.orderId = id;
+        this.orderCustomerId = customerId;
+        this.orderProductId = productId;
+        this.quantity = qty;
+        this.orderPrice = price;
+    }
     public String getOrderId() {
         return orderId;
     }

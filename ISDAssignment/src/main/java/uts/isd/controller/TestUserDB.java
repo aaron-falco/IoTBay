@@ -21,7 +21,7 @@ public class TestUserDB {
                 System.out.println("Database not initialized.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -31,7 +31,7 @@ public class TestUserDB {
             conn = connector.openConnection();
             db = new DBManager(conn);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -85,7 +85,7 @@ public class TestUserDB {
             db.addUser(id, firstName, lastName, email, password, phoneNumber, userType); 
             System.out.println("User added.");
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error adding user.");
         }
     }
@@ -128,7 +128,7 @@ public class TestUserDB {
             }
         }
         catch (SQLException ex){
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error reading user.");
         }
     }
@@ -154,7 +154,7 @@ public class TestUserDB {
             System.out.println("User updated.");
         }
         catch (SQLException ex){
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error updating user.");
         }
     }
@@ -168,7 +168,7 @@ public class TestUserDB {
             System.out.println("User deleted.");
         }
         catch (SQLException ex){
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error deleting user.");
         }
     }
@@ -192,7 +192,7 @@ public class TestUserDB {
             }
             System.out.println();
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error fetching users.");
         }
     }

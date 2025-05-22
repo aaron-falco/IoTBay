@@ -73,6 +73,28 @@
 
         <input type="submit" value="Add">
     </form>
+     <h3>Update Product</h3>
+    <form method="post" action="UPDATEPRODUCT.jsp">
+        <label for="id">Product ID:</label><br>
+        <input type="text" id="id" name="id" required><br><br>
+
+        <label for="name">Product Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="type">Product Type:</label><br>
+        <input type="text" id="type" name="type" required><br><br>
+
+        <label for="desc">Product Description:</label><br>
+        <input type="text" id="desc" name="desc" required><br><br>
+
+        <label for="quant">Product Quantity:</label><br>
+        <input type="number" id="quant" name="quant" required><br><br>
+
+        <label for="price">Product Price:</label><br>
+        <input type="number" step="0.01" id="price" name="price" required><br><br>
+
+        <input type="submit" value="Update">
+    </form>
         <h3>Delete Product</h3>
         <form method="post" action="DELETEPRODUCT.jsp">
                     <label for="id">Product ID:</label><br>

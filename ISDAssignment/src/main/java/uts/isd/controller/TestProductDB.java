@@ -7,7 +7,7 @@ import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.DBManager;
 import uts.isd.Product;
 
-public class TestDB {
+public class TestProductDB {
 
     private static Scanner in = new Scanner(System.in);
     private DBManager db;
@@ -15,24 +15,24 @@ public class TestDB {
 
     public static void main(String[] args) {
         try {
-            TestDB testDB = new TestDB();
+            TestProductDB testDB = new TestProductDB();
             if (testDB.db != null) {
                 testDB.runQueries();
             } else {
                 System.out.println("Database not initialized.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public TestDB() {
+    public TestProductDB() {
         try {
             DBConnector connector = new DBConnector();
             conn = connector.openConnection();
             db = new DBManager(conn);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -67,28 +67,28 @@ public class TestDB {
         }
     }
 
-private void testAdd() {
-    try {
-        System.out.print("Product ID: ");
-        String id = in.nextLine();
-        System.out.print("Name: ");
-        String name = in.nextLine();
-        System.out.print("Type: ");
-        String type = in.nextLine(); 
-        System.out.print("Description: ");
-        String desc = in.nextLine();
-        System.out.print("Quantity: ");
-        int qty = Integer.parseInt(in.nextLine());
-        System.out.print("Price: ");
-        float price = Float.parseFloat(in.nextLine());
+    private void testAdd() {
+        try {
+            System.out.print("Product ID: ");
+            String id = in.nextLine();
+            System.out.print("Name: ");
+            String name = in.nextLine();
+            System.out.print("Type: ");
+            String type = in.nextLine(); 
+            System.out.print("Description: ");
+            String desc = in.nextLine();
+            System.out.print("Quantity: ");
+            int qty = Integer.parseInt(in.nextLine());
+            System.out.print("Price: ");
+            float price = Float.parseFloat(in.nextLine());
 
-        db.addProduct(id, name, type, desc, qty, price); 
-        System.out.println("Product added.");
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-        System.out.println("SQL Error adding product.");
+            db.addProduct(id, name, type, desc, qty, price); 
+            System.out.println("Product added.");
+        } catch (SQLException ex) {
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQL Error adding product.");
+        }
     }
-}
 
     private void testRead() {
         try {
@@ -101,7 +101,7 @@ private void testAdd() {
                 System.out.println("Product not found.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error reading product.");
         }
     }
@@ -124,7 +124,7 @@ private void testAdd() {
             db.updateProduct(id, name,type, desc, qty, price);
             System.out.println("Product updated.");
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error updating product.");
         }
     }
@@ -136,33 +136,33 @@ private void testAdd() {
             db.deleteProduct(id);
             System.out.println("Product deleted.");
         } catch (SQLException ex) {
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SQL Error deleting product.");
         }
     }
 
-private void showAll() {
-    try {
-        ArrayList<Product> products = db.fetchProducts();
-        System.out.println("Products Table:");
-        System.out.printf("%-10s %-25s %-15s %-40s %-10s %-10s\n", 
-            "ID", "Name", "Type", "Description", "Quantity", "Price");
-
-        for (Product product : products) {
-            System.out.printf("%-10s %-25s %-15s %-40s %-10d %-10.2f\n", 
-                product.getProductId(), 
-                product.getProductName(), 
-                product.getProductType(), 
-                product.getProductDescription(), 
-                product.getQuantity(), 
-                product.getPrice());
+    private void showAll() {
+        try {
+            ArrayList<Product> products = db.fetchProducts();
+            System.out.println("Products Table:");
+            System.out.printf("%-10s %-25s %-15s %-40s %-10s %-10s\n", 
+                "ID", "Name", "Type", "Description", "Quantity", "Price");
+            
+            for (Product product : products) {
+                System.out.printf("%-10s %-25s %-15s %-40s %-10d %-10.2f\n", 
+                    product.getProductId(), 
+                    product.getProductName(), 
+                    product.getProductType(), 
+                    product.getProductDescription(), 
+                    product.getQuantity(), 
+                    product.getPrice());
+            }
+            System.out.println();
+        } catch (SQLException ex) {
+            Logger.getLogger(TestProductDB.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQL Error fetching products.");
         }
-        System.out.println();
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-        System.out.println("SQL Error fetching products.");
     }
-}
 
 
 }

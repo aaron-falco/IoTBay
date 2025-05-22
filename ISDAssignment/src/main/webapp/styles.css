@@ -1,3 +1,12 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 May 2025, 11:09:23 am
+    Author     : Aaron
+*/
+
 .button {
     padding: 12px 24px;
     background: #e8e8e8;
@@ -57,4 +66,9 @@ li a {
 
 li a:hover {
   background-color: #111;
+}
+
+.defaultDivStyle table{
+    margin-left: auto;
+    margin-right: auto;
 }

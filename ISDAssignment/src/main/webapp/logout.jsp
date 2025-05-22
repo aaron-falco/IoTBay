@@ -13,7 +13,7 @@
     <script>
         function confirmSignOut() {
             if (confirm("Are you sure you want to sign out?")) {
-                window.location.href = 'landing.jsp';
+                window.location.href = 'goodbye.jsp';
             }
         }
         function cancel(){
@@ -23,9 +23,6 @@
 </head>
 <body>
     <div class="defaultDivStyle">
-    <%
-        session.invalidate();
-        %>
         <h1>Sign Out?</h1>
         <button class="button" onclick="confirmSignOut()">Sign Out</button>
         <br><br>

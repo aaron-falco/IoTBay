@@ -5,9 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <link rel="stylesheet" href="IoTBayStyles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <ul>
+        <li><a href="Catalog.jsp">Catalog</a></li>
+        <li><a href="Account.jsp">Account</a></li>
+        <li><a href="logout.jsp">Logout</a></li>
+    </ul>
     <div class="defaultDivStyle">
     <h2>Main Page</h2>
     <%
@@ -48,8 +53,12 @@
     <form action="MANAGERADD.jsp" method="post">
         <button type="submit">Edit Catalog</button>
     </form>
+    <form action="ORDERMANAGEMENT.jsp" method="post">
+        <button type="submit">Order Management</button>
+    </form>
 <% } %>
 
+<<<<<<< HEAD
     <form action="Catalog.jsp" method="post">
         <button type="submit">Catalog</button>
     </form>
@@ -59,6 +68,8 @@
     <form action="addPayment.jsp" method="post">
         <button type="submit">Add Payment</button>
     </form>
+=======
+>>>>>>> main
     <%
         }
     %>

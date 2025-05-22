@@ -32,14 +32,17 @@ CREATE TABLE ORDERS(
     orderProductId VARCHAR(10),
     orderPrice FLOAT,
     orderQuantity INTEGER,
+    orderStatus VARCHAR(20), -- Can be Unprocessed, Processed, Completed or Cancelled
     PRIMARY KEY (orderId)
 );
 
 CREATE TABLE USERLOGINRECORDS(
     loginRecordId VARCHAR(10),
     userId VARCHAR(10),
-    loginDate DATE,
-    loginTime TIME,
+    loginDate VARCHAR(10), -- Format: dd/mm/yyyy
+    loginTime VARCHAR(5), -- Format: hh:mm
+    logoutDate VARCHAR(10), -- Format: dd/mm/yyyy
+    logoutTime VARCHAR(5), -- Format: hh:mm
     PRIMARY KEY (loginRecordId)
 );
 
@@ -54,6 +57,7 @@ CREATE TABLE PAYMENTINFO(
     PRIMARY KEY (paymentInfoId)
 );
 
+<<<<<<< HEAD
 CREATE TABLE PAYMENTS (
     paymentInfoId VARCHAR(50) PRIMARY KEY,
     ORDERID VARCHAR(50),
@@ -64,29 +68,35 @@ CREATE TABLE PAYMENTS (
     paymentAmount FLOAT,
     paymentDate VARCHAR(20)
 );
+=======
+INSERT INTO USERLOGINRECORDS VALUES
+('UR1', 'U1', '01/01/2025', '10:23', '01/01/2025', '11:56'),
+('UR2', 'U1', '01/01/2025', '13:01', '01/01/2025', '15:43'),
+('UR3', 'U1', '05/01/2025', '14:35', '01/01/2025', '17:00');
+>>>>>>> main
 
 -- Insert records into tables
 INSERT INTO USERS (userId, firstName, lastName, password, email, phoneNumber, userType) VALUES
-('U0001', 'Alice', 'Smith', 'pass1234', 'alice.smith@example.com', '0412345678', 0),
-('U0002', 'Bob', 'Johnson', 'securepwd', 'bob.johnson@example.com', '0423456789', 1),
-('U0003', 'Carol', 'Williams', 'carolpass', 'carol.williams@example.com', '0434567890', 2),
-('U0004', 'David', 'Brown', 'davidpass', 'david.brown@example.com', '0445678901', 0),
-('U0005', 'Eva', 'Jones', 'evaj1234', 'eva.jones@example.com', '0456789012', 1),
-('U0006', 'Frank', 'Garcia', 'frankpwd', 'frank.garcia@example.com', '0467890123', 2),
-('U0007', 'Grace', 'Miller', 'gracepw1', 'grace.miller@example.com', '0478901234', 0),
-('U0008', 'Henry', 'Davis', 'henrypass', 'henry.davis@example.com', '0489012345', 1),
-('U0009', 'Ivy', 'Martinez', 'ivypasswd', 'ivy.martinez@example.com', '0490123456', 2),
-('U0010', 'Jack', 'Hernandez', 'jackpw88', 'jack.hernandez@example.com', '0411223344', 0),
-('U0011', 'Karen', 'Lopez', 'karen123', 'karen.lopez@example.com', '0422334455', 1),
-('U0012', 'Leo', 'Gonzalez', 'leo4321', 'leo.gonzalez@example.com', '0433445566', 2),
-('U0013', 'Mona', 'Wilson', 'monapw22', 'mona.wilson@example.com', '0444556677', 0),
-('U0014', 'Nick', 'Anderson', 'nickpass', 'nick.anderson@example.com', '0455667788', 1),
-('U0015', 'Olga', 'Thomas', 'olga3210', 'olga.thomas@example.com', '0466778899', 2),
-('U0016', 'Paul', 'Taylor', 'paulpw99', 'paul.taylor@example.com', '0477889900', 0),
-('U0017', 'Quinn', 'Moore', 'quinnpw', 'quinn.moore@example.com', '0488990011', 1),
-('U0018', 'Rose', 'Jackson', 'rosepass', 'rose.jackson@example.com', '0499001122', 2),
-('U0019', 'Sam', 'White', 'sampass1', 'sam.white@example.com', '0410333444', 0),
-('U0020', 'Tina', 'Harris', 'tina4567', 'tina.harris@example.com', '0420444555', 1);
+('U1', 'Alice', 'Smith', 'pass1234', 'alice.smith@example.com', '0412345678', 0),
+('U2', 'Bob', 'Johnson', 'securepwd', 'bob.johnson@example.com', '0423456789', 1),
+('U3', 'Carol', 'Williams', 'carolpass', 'carol.williams@example.com', '0434567890', 2),
+('U4', 'David', 'Brown', 'davidpass', 'david.brown@example.com', '0445678901', 0),
+('U5', 'Eva', 'Jones', 'evaj1234', 'eva.jones@example.com', '0456789012', 1),
+('U6', 'Frank', 'Garcia', 'frankpwd', 'frank.garcia@example.com', '0467890123', 2),
+('U7', 'Grace', 'Miller', 'gracepw1', 'grace.miller@example.com', '0478901234', 0),
+('U8', 'Henry', 'Davis', 'henrypass', 'henry.davis@example.com', '0489012345', 1),
+('U9', 'Ivy', 'Martinez', 'ivypasswd', 'ivy.martinez@example.com', '0490123456', 2),
+('U10', 'Jack', 'Hernandez', 'jackpw88', 'jack.hernandez@example.com', '0411223344', 0),
+('U11', 'Karen', 'Lopez', 'karen123', 'karen.lopez@example.com', '0422334455', 1),
+('U12', 'Leo', 'Gonzalez', 'leo4321', 'leo.gonzalez@example.com', '0433445566', 2),
+('U13', 'Mona', 'Wilson', 'monapw22', 'mona.wilson@example.com', '0444556677', 0),
+('U14', 'Nick', 'Anderson', 'nickpass', 'nick.anderson@example.com', '0455667788', 1),
+('U15', 'Olga', 'Thomas', 'olga3210', 'olga.thomas@example.com', '0466778899', 2),
+('U16', 'Paul', 'Taylor', 'paulpw99', 'paul.taylor@example.com', '0477889900', 0),
+('U17', 'Quinn', 'Moore', 'quinnpw', 'quinn.moore@example.com', '0488990011', 1),
+('U18', 'Rose', 'Jackson', 'rosepass', 'rose.jackson@example.com', '0499001122', 2),
+('U19', 'Sam', 'White', 'sampass1', 'sam.white@example.com', '0410333444', 0),
+('U20', 'Tina', 'Harris', 'tina4567', 'tina.harris@example.com', '0420444555', 1);
 
 
 INSERT INTO PRODUCTS (productId, productName, productType, productDescription, quantity, price)
@@ -100,7 +110,50 @@ VALUES
 ('P007', 'Air Quality Monitor', 'Monitor', 'Tracks CO2, VOCs, and PM2.5 for better home air quality.', 60, 129.00),
 ('P008', 'IoT Light Strip', 'Lighting', 'RGB light strip with app control and voice assistant support.', 120, 34.99),
 ('P009', 'Smart Speaker Hub', 'Hub', 'Centralized control for IoT devices with built-in voice assistant.', 90, 179.00),
-('P010', 'Motion Sensor', 'Sensor', 'PIR motion sensor for home automation and security systems.', 110, 19.95);
+('P010', 'Motion Sensor', 'Sensor', 'PIR motion sensor for home automation and security systems.', 110, 19.95),
+('P011', 'Smart Smoke Detector', 'Sensor', 'WiFi-enabled smoke and carbon monoxide detector with mobile alerts.', 80, 59.99),
+('P012', 'Smart Garage Opener', 'Controller', 'Smart garage door controller with real-time open/close status.', 45, 99.95),
+('P013', 'Smart Sprinkler Controller', 'Controller', 'Automated irrigation scheduling with weather-based adjustments.', 30, 149.00),
+('P014', 'Smart Mirror', 'Display', 'Touch-enabled mirror with weather, calendar, and news display.', 20, 299.99),
+('P015', 'Energy Monitoring System', 'Monitor', 'Whole-home energy usage monitor with detailed analytics.', 25, 199.00),
+('P016', 'IoT Pet Feeder', 'Appliance', 'WiFi-controlled pet feeder with portion scheduling and video camera.', 35, 124.95),
+('P017', 'Smart Window Sensor', 'Sensor', 'Contact sensor for windows with tamper detection and mobile alerts.', 100, 18.50),
+('P018', 'Smart Blinds Controller', 'Controller', 'Automated blinds opener with schedule and light sensor integration.', 40, 89.99),
+('P019', 'IoT Coffee Maker', 'Appliance', 'Schedule coffee brewing via app or voice assistant integration.', 25, 149.99),
+('P020', 'Smart Water Valve', 'Valve', 'Remote-controlled valve for automatic shutoff during leaks.', 50, 109.00);
+
+INSERT INTO ORDERS (orderId, orderCustomerId, orderProductId, orderPrice, orderQuantity, orderStatus)
+VALUES
+('O001', 'U1', 'P001', 199.99, 1, 'Completed'),
+('O002', 'U5', 'P003', 59.98, 2, 'Processed'),
+('O003', 'U5', 'P005', 39.98, 2, 'Unprocessed'),
+('O004', 'U7', 'P004', 149.99, 1, 'Cancelled'),
+('O005', 'U7', 'P002', 399.99, 1, 'Completed'),
+('O006', 'U1', 'P005', 99.95, 5, 'Completed'),
+('O007', 'U4', 'P001', 199.99, 1, 'Unprocessed'),
+('O008', 'U20', 'P003', 29.99, 1, 'Cancelled'),
+('O009', 'U14', 'P004', 149.99, 1, 'Processed'),
+('O010', 'U4', 'P002', 799.98, 2, 'Unprocessed'),
+('O011', 'U5', 'P003', 89.97, 3, 'Completed'),
+('O012', 'U14', 'P005', 59.97, 3, 'Completed'),
+('O013', 'U15', 'P001', 399.98, 2, 'Completed'),
+('O014', 'U1', 'P003', 29.99, 1, 'Completed'),
+('O015', 'U15', 'P004', 149.99, 1, 'Completed'),
+('O016', 'U10', 'P002', 399.99, 1, 'Completed'),
+('O017', 'U10', 'P005', 99.95, 5, 'Completed'),
+('O018', 'U1', 'P001', 199.99, 1, 'Completed'),
+('O019', 'U7', 'P003', 59.98, 2, 'Completed'),
+('O020', 'U1', 'P004', 299.98, 2, 'Completed'),
+('O021', 'U1', 'P002', 399.99, 1, 'Completed'),
+('O022', 'U19', 'P005', 19.99, 1, 'Completed'),
+('O023', 'U20', 'P001', 199.99, 1, 'Completed'),
+('O024', 'U19', 'P003', 59.98, 2, 'Completed'),
+('O025', 'U19', 'P004', 299.98, 2, 'Completed'),
+('O026', 'U19', 'P002', 399.99, 1, 'Completed'),
+('O027', 'U19', 'P005', 39.98, 2, 'Completed'),
+('O028', 'U19', 'P001', 199.99, 1, 'Completed'),
+('O029', 'U1', 'P003', 89.97, 3, 'Completed'),
+('O030', 'U19', 'P004', 149.99, 1, 'Completed');
 
 -- Examples of Table Interactions:
 -- Insert into Users Table
