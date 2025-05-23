@@ -17,6 +17,18 @@
             try {
                 // Connect to database
                   DBManager db = (DBManager) session.getAttribute("db");
+                  
+                  //Check if email exists already
+                  if(db.findUserFromEmail(request.getParameter("email")) != null){
+                    session.setAttribute("userEmailTaken", true);
+                    response.sendRedirect("register.jsp");
+                    %>
+                    <div class="defaultDivStyle">
+                        <p>If not automatically redirected click <a href="register.jsp">HERE</a>.</p>
+                    </div>
+                    <%
+                  }
+                  
                   User newUser = new User();
                   newUser.setUserId("U" + String.valueOf(db.getRowCountUsers()));
                   newUser.setFirstName(request.getParameter("firstName"));
@@ -39,6 +51,12 @@
                     response.sendRedirect("main.jsp");
                   }
                   else{
+                    %>
+                    <div class="defaultDivStyle">
+                        <p>If not automatically redirected click <a href="login.jsp">HERE</a>.</p>
+                    </div>
+                    <%
+                    session.setAttribute("registrationFailed", true);
                     response.sendRedirect("register.jsp");
                   }
             }

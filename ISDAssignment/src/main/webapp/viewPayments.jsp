@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="styles.css">
         <div style="width: 400px; margin: 0 auto;">
     </head>
-    
     <body>
         <h2></h2>
 

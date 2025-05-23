@@ -13,8 +13,7 @@
 <body>
     <ul>
         <li><a href="login.jsp">Login</a></li>
-        <li><a href="register.jsp">Register</a></li>
-        <li><a href="Catalog.jsp">Catalog</a></li>
+        <li><a href="landing.jsp">Home</a></li>
     </ul>
     <div class="defaultDivStyle">        
         <h2>Register Account</h2>
@@ -35,6 +34,20 @@
             <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="0412345678" pattern="04[0-9]{8}" required>
             <br><br>
             <input type="submit" value="Register" />
+            <%
+                if(session.getAttribute("registrationFailed") != null){
+                    %>
+                        <p style="color: red"> Invalid registration details. Please try again. <p>
+                        <br><br>
+                    <%
+                }
+                else if (session.getAttribute("userEmailTaken") != null){
+                    %>
+                        <p style="color: red"> There is already a user registered under that email. Please <a href="login.jsp">Login</a> or try again. <p>
+                        <br><br>
+                    <%
+                }
+            %>
         </form>
         <br><br>
         <button class='button' onclick="cancel()">Cancel</button>
