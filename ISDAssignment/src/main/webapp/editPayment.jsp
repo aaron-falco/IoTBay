@@ -28,9 +28,9 @@
         <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
             <form action="updatePayment.jsp" method="post" style="border: 1px solid #ccc; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; background: #fff;">
                 <h2 style="text-align: center;">Edit Payment Details</h2>
-                <%--
+                
                 <input type="hidden" name="paymentId" value="<%= payment.getPaymentInfoId() %>">
-
+                <%--
                 <label>Order ID:</label><br>
                 <input type="text" name="orderId" value="<%= payment.getOrderId() %>" required><br><br>
                 --%>
