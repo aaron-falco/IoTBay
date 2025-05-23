@@ -25,7 +25,7 @@
                     String type = request.getParameter("cardNumber");
                     String desc = request.getParameter("cvc");
                     String date = request.getParameter("expiryDate");
-                    int amount = Integer.parseInt(request.getParameter("paymentAmount"));
+                    float amount = Float.parseFloat(request.getParameter("paymentAmount"));
                     String paymentDate = request.getParameter("paymentDate");
                     DBManager manager = (DBManager) session.getAttribute("manager");
 
