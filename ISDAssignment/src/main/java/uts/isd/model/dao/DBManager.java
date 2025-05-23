@@ -343,6 +343,28 @@ public class DBManager {
         }
         return results;
     }
+    public ArrayList<Order> searchOrdersByDate(String customerId, String date) throws SQLException {
+    String query = "SELECT * FROM ISDUSER.Orders WHERE orderCustomerId = '" + customerId + "' AND orderId LIKE '%" + date + "%'";
+    ResultSet rs = st.executeQuery(query);
+    ArrayList<Order> results = new ArrayList<>();
+
+    while (rs.next()) {
+        String id = rs.getString("orderId");
+        String productId = rs.getString("orderProductId");
+        float price = rs.getFloat("orderPrice");
+        int qty = rs.getInt("orderQuantity");
+        String status = rs.getString("orderStatus");
+
+        results.add(new Order(id, customerId, productId, price, qty, status));
+    }
+    return results;
+}
+public void cancelOrder(String orderId) throws SQLException {
+    String query = "UPDATE ISDUSER.Orders SET orderStatus='Cancelled' WHERE orderId='" + orderId + "'";
+    st.executeUpdate(query);
+}
+
+
 
     public void cancelOrdersByUserId(String userId) throws SQLException {
         String query = "UPDATE ISDUSER.ORDERS SET orderStatus = 'Cancelled' WHERE orderCustomerId = '" + userId + "'";
