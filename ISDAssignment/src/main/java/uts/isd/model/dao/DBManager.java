@@ -359,6 +359,26 @@ public class DBManager {
     }
     return results;
 }
+    public ArrayList<Order> searchOrdersByCustomerAndKeyword(String userId, String keyword) throws SQLException {
+    ArrayList<Order> results = new ArrayList<Order>();
+    String query = "SELECT * FROM ISDUSER.Orders WHERE orderCustomerId = ? AND (orderId LIKE ? OR orderId LIKE ?)";
+    PreparedStatement ps = conn.prepareStatement(query);
+    ps.setString(1, userId);
+    ps.setString(2, "%" + keyword + "%");
+    ps.setString(3, "%" + keyword + "%"); // use same for ID and date (if embedded)
+    ResultSet rs = ps.executeQuery();
+
+    while (rs.next()) {
+        String id = rs.getString("orderId");
+        String productId = rs.getString("orderProductId");
+        float price = rs.getFloat("orderPrice");
+        int qty = rs.getInt("orderQuantity");
+        String status = rs.getString("orderStatus");
+        results.add(new Order(id, userId, productId, price, qty, status));
+    }
+    return results;
+}
+
 public void cancelOrder(String orderId) throws SQLException {
     String query = "UPDATE ISDUSER.Orders SET orderStatus='Cancelled' WHERE orderId='" + orderId + "'";
     st.executeUpdate(query);
