@@ -30,7 +30,7 @@
 
 <% } %>
             <% if (user.getUserType() == 0) { %>
-            <li><a href="addPayment.jsp.jsp">Add Payment</a></li>
+            <li><a href="addPayment.jsp">Add Payment</a></li>
         <li><a href="viewPayments.jsp">View Payments</a></li>
 
 <% } %>
@@ -67,6 +67,11 @@
 %>
 </p>
 
+
+
+    <%
+        }
+    %>
     </div>
 </body>
 </html>
