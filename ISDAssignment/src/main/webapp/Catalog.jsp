@@ -6,7 +6,7 @@
 <%@ page import="uts.isd.Product" %>
 <%@ page import="uts.isd.model.dao.DBManager" %>
 <%
-    DBManager manager = (DBManager) session.getAttribute("manager");
+    DBManager manager = (DBManager) session.getAttribute("db");
     ArrayList<Product> products = null;
 
     if (manager != null) {
