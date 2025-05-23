@@ -20,7 +20,6 @@
 
 <%
     try {
-        // Connect to database
         DBConnector connector = new DBConnector();
         Connection conn = connector.openConnection();
         DBManager manager = new DBManager(conn);
