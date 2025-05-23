@@ -58,11 +58,12 @@
             <% if(accountUpdated != null){ 
                 if(accountUpdated){%>
                 <br><p>Account Updated!</p><br>
-            <% }} %>
-            <% if(accountUpdated != null){ 
-                if(accountUpdated){%>
-                <br><p>Account Updated!</p><br>
-            <% }} %>
+            <%      }
+                else {%>
+                <br><p style="color: red">Invalid details entered. Please try again.</p><br>
+                <%}
+            } 
+            %>
             <h1>Account Login History:</h1>
             <form method="post" action="Account.jsp">
                 <label for="searchDate">Search Date: </label>
