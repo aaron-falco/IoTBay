@@ -3,7 +3,7 @@
 
 
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="uts.isd.Product" %>
+<%@ page import="uts.isd.*" %>
 <%@ page import="uts.isd.model.dao.DBManager" %>
 <%
     DBManager manager = (DBManager) session.getAttribute("db");
@@ -31,7 +31,9 @@
     <input type="submit" value="Search" />
     </form>
 
-    <% if (products != null && !products.isEmpty()) { %>
+    <% 
+        User user = (User) session.getAttribute("user");
+        if (products != null && !products.isEmpty()) { %>
         <table border="1" cellpadding="10">
             <tr>
                 <th>ID</th>
@@ -53,7 +55,9 @@
                         <form action="addtoCART.jsp" method="post">
                             <input type="hidden" name="productId" value="<%= p.getProductId() %>"/>
                             <input type="number" name="quantity" value="1" min="1" max="<%= p.getQuantity() %>"/>
+                            <%if(user.getUserType() == 0) { %>
                             <input type="submit" value="Add to Cart" />
+                            <% } %>
                         </form>
                     </td>
                 </tr>
