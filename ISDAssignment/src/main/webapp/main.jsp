@@ -46,7 +46,6 @@
     } else {
 %>
     <p>Email: <%= user.getEmail() %></p>
-    <p>Password: <%= user.getPassword() %></p>
 
     <% if (user.getFirstName() != null) { %>
         <p>First Name: <%= user.getFirstName() %></p>
