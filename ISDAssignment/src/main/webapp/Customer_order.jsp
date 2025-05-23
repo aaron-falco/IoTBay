@@ -1,58 +1,55 @@
 <%-- 
-    Document   : ordersmanagement
-    Created on : 22 May 2025, 1:48:22?am
-    Author     : Mandu
+    Document   : Customer_order
+    Created on : 23 May 2025, 11:28:21 am
+    Author     : Nur Fatini Jamla
 --%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="uts.isd.Order" %>
 <%@ page import="uts.isd.model.dao.DBManager" %>
+
 <%
-    DBManager manager = (DBManager) session.getAttribute("db");
-    ArrayList<Order> orders = null;
+    DBManager manager = (DBManager) session.getAttribute("manager");
+    String userId = (String) session.getAttribute("userId");
+    ArrayList<Order> orders = new ArrayList<Order>();
     String message = "";
     Order foundOrder = null;
 
-    if (manager != null) {
+    if (manager != null && userId != null) {
         try {
             String action = request.getParameter("action");
+
             if ("add".equals(action)) {
                 String id = request.getParameter("orderId");
-                String customerId = request.getParameter("customerId");
                 String productId = request.getParameter("productId");
                 float price = Float.parseFloat(request.getParameter("orderPrice"));
                 int quantity = Integer.parseInt(request.getParameter("orderQuantity"));
                 String status = request.getParameter("orderStatus");
-                manager.addOrder(id, customerId, productId, price, quantity, status);
-                message = "Order added successfully.";
-
+                manager.addOrder(id, userId, productId, price, quantity, status);
+                message = "✅ Order added successfully.";
             } else if ("update".equals(action)) {
                 String id = request.getParameter("orderId");
-                String customerId = request.getParameter("customerId");
                 String productId = request.getParameter("productId");
                 float price = Float.parseFloat(request.getParameter("orderPrice"));
                 int quantity = Integer.parseInt(request.getParameter("orderQuantity"));
                 String status = request.getParameter("orderStatus");
-                manager.updateOrder(id, customerId, productId, price, quantity, status);
-                message = "Order updated successfully.";
-
+                manager.updateOrder(id, userId, productId, price, quantity, status);
+                message = "✅ Order updated successfully.";
             } else if ("delete".equals(action)) {
                 String id = request.getParameter("orderId");
                 manager.deleteOrder(id);
-                message = "Order deleted successfully.";
-
+                message = "🗑️ Order deleted.";
             } else if ("search".equals(action)) {
                 String id = request.getParameter("orderId");
                 foundOrder = manager.findOrder(id);
-                if (foundOrder != null) {
-                    message = "Order found.";
-                } else {
-                    message = "Order not found.";
-                }
+                message = (foundOrder != null) ? "🔍 Order found." : "❌ Order not found.";
             }
 
-            orders = manager.fetchOrders();
+            orders = manager.searchOrdersByCustomer(userId);
+
         } catch (Exception e) {
-            message = "Error: " + e.getMessage();
+            message = "❗ Error: " + e.getMessage();
         }
     }
 %>
@@ -60,104 +57,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Order Management</title>
+    <title>Customer Orders</title>
+    <link rel="stylesheet" href="IoTBayStyles.css">
 </head>
 <body>
-    <h1>Order Management</h1>
+
+<ul>
+    <li><a href="Catalog.jsp">Catalog</a></li>
+    <li><a href="Customer_order.jsp">My Orders</a></li>
+    <li><a href="Account.jsp">Account</a></li>
+    <li><a href="logout.jsp">Logout</a></li>
+</ul>
+
+<div class="defaultDivStyle">
+    <h1>My Orders</h1>
     <p style="color:green;"><%= message %></p>
 
     <h2>Add Order</h2>
-    <form method="get" action="orders.jsp">
+    <form method="get" action="Customer_order.jsp">
         <input type="hidden" name="action" value="add" />
-        Order ID: <input type="text" name="orderId" required /><br />
-        Customer ID: <input type="text" name="customerId" required /><br />
-        Product ID: <input type="text" name="productId" required /><br />
-        Price: <input type="text" name="orderPrice" required /><br />
-        Quantity: <input type="number" name="orderQuantity" required /><br />
+        Order ID: <input type="text" name="orderId" required /><br /><br />
+        Product ID: <input type="text" name="productId" required /><br /><br />
+        Price: <input type="text" name="orderPrice" required /><br /><br />
+        Quantity: <input type="number" name="orderQuantity" required /><br /><br />
         Status:
         <select name="orderStatus" required>
             <option value="Unprocessed">Unprocessed</option>
             <option value="Processed">Processed</option>
             <option value="Completed">Completed</option>
             <option value="Cancelled">Cancelled</option>
-        </select><br />
+        </select><br /><br />
         <input type="submit" value="Add Order" />
     </form>
 
-    <h2>Update Existing Order</h2>
-    <form method="get" action="orders.jsp">
+    <h2>Update Order</h2>
+    <form method="get" action="Customer_order.jsp">
         <input type="hidden" name="action" value="update" />
-        Order ID: <input type="text" name="orderId" required /><br />
-        Customer ID: <input type="text" name="customerId" required /><br />
-        Product ID: <input type="text" name="productId" required /><br />
-        Price: <input type="text" name="orderPrice" required /><br />
-        Quantity: <input type="number" name="orderQuantity" required /><br />
+        Order ID: <input type="text" name="orderId" required /><br /><br />
+        Product ID: <input type="text" name="productId" required /><br /><br />
+        Price: <input type="text" name="orderPrice" required /><br /><br />
+        Quantity: <input type="number" name="orderQuantity" required /><br /><br />
         Status:
         <select name="orderStatus" required>
             <option value="Unprocessed">Unprocessed</option>
             <option value="Processed">Processed</option>
             <option value="Completed">Completed</option>
             <option value="Cancelled">Cancelled</option>
-        </select><br />
+        </select><br /><br />
         <input type="submit" value="Update Order" />
     </form>
 
     <h2>Delete Order</h2>
-    <form method="get" action="orders.jsp">
+    <form method="get" action="Customer_order.jsp">
         <input type="hidden" name="action" value="delete" />
         Order ID: <input type="text" name="orderId" required />
         <input type="submit" value="Delete Order" />
     </form>
 
     <h2>Search Order by ID</h2>
-    <form method="get" action="orders.jsp">
+    <form method="get" action="Customer_order.jsp">
         <input type="hidden" name="action" value="search" />
         Order ID: <input type="text" name="orderId" required />
         <input type="submit" value="Search" />
     </form>
 
-    <h2>All Orders</h2>
+    <h2>Your Orders</h2>
     <table border="1">
         <tr>
             <th>Order ID</th>
-            <th>Customer ID</th>
             <th>Product ID</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Status</th>
         </tr>
-        <%
-            if (foundOrder != null) {
-        %>
-            <tr style="background-color: #f0f8ff;">
-                <td><%= foundOrder.getOrderId() %></td>
-                <td><%= foundOrder.getOrderCustomerId() %></td>
-                <td><%= foundOrder.getOrderProductId() %></td>
-                <td><%= foundOrder.getOrderPrice() %></td>
-                <td><%= foundOrder.getQuantity() %></td>
-                <td><%= foundOrder.getOrderStatus() %></td>
-            </tr>
-        <%
-            }
-            if (orders != null) {
-                for (Order o : orders) {
-        %>
+        <% if (foundOrder != null && foundOrder.getOrderCustomerId().equals(userId)) { %>
+        <tr style="background-color: #f0f8ff;">
+            <td><%= foundOrder.getOrderId() %></td>
+            <td><%= foundOrder.getOrderProductId() %></td>
+            <td><%= foundOrder.getOrderPrice() %></td>
+            <td><%= foundOrder.getQuantity() %></td>
+            <td><%= foundOrder.getOrderStatus() %></td>
+        </tr>
+        <% } %>
+
+        <% if (orders != null && !orders.isEmpty()) {
+            for (Order o : orders) { %>
             <tr>
                 <td><%= o.getOrderId() %></td>
-                <td><%= o.getOrderCustomerId() %></td>
                 <td><%= o.getOrderProductId() %></td>
                 <td><%= o.getOrderPrice() %></td>
                 <td><%= o.getQuantity() %></td>
                 <td><%= o.getOrderStatus() %></td>
             </tr>
-        <%
-                }
-            }
-        %>
+        <%  }
+        } else if (foundOrder == null) { %>
+            <tr><td colspan="5">No orders found.</td></tr>
+        <% } %>
     </table>
+</div>
 
-    <form action="main.jsp" method="get" style="display: inline;">
-        <input type="submit" value="Main Page" />
-    </form>
 </body>
 </html>

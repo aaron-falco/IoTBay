@@ -43,7 +43,7 @@ public class Order implements Serializable {
         return quantity;
     }
 
-    public String getOrderStatus() {                    // ✅ Added getter
+    public String getOrderStatus() {                   
         return orderStatus;
     }
 
@@ -67,7 +67,7 @@ public class Order implements Serializable {
         this.quantity = quantity;
     }
 
-    public void setOrderStatus(String orderStatus) {    // ✅ Added setter
+    public void setOrderStatus(String orderStatus) {   
         this.orderStatus = orderStatus;
     }
 }

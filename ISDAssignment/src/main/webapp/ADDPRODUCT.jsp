@@ -24,7 +24,7 @@
                     String desc = request.getParameter("desc");
                     int quant = Integer.parseInt(request.getParameter("quant"));
                     float price = Float.parseFloat(request.getParameter("price"));
-                    DBManager manager = (DBManager) session.getAttribute("manager");
+                    DBManager manager = (DBManager) session.getAttribute("db");
 
                     if (manager != null) {
                         manager.addProduct(id, name, type, desc, quant, price);
