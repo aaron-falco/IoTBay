@@ -20,9 +20,14 @@
 <ul>
     <li><a href="Catalog.jsp">Catalog</a></li>
     <li><a href="Account.jsp">Account</a></li>
+    <li><a href="addPayment.jsp">Add Payment</a></li>
     <% if (user != null && user.getUserType() == 0) { %>
         <li><a href="CART.jsp">🛒 My Cart</a></li>
         <li><a href="viewCustomerOrder.jsp">📜 My Orders</a></li>
+    <% } %>
+    <% if (user != null && user.getUserType() == 2) { %>
+        <li><a href="MANAGERADD.jsp.jsp">Catalogue Manager</a></li>
+        <li><a href="ORDERMANAGEMENT.jsp">Order Management</a></li>
     <% } %>
     <li><a href="logout.jsp">Logout</a></li>
 </ul>
@@ -57,26 +62,10 @@
     %>
     </p>
 
-    <%-- Admin Only Buttons --%>
-    <% if (user.getUserType() == 2) { %>
-        <form action="MANAGERADD.jsp" method="post">
-            <button type="submit">Edit Catalog</button>
-        </form>
-        <form action="admin_orders.jsp" method="post">
-            <button type="submit">View All Orders</button>
-        </form>
-    <% } %>
 
-    <%-- Common Buttons --%>
-    <form action="Catalog.jsp" method="post">
-        <button type="submit">Browse Products</button>
-    </form>
-    <form action="addPayment.jsp" method="post">
-        <button type="submit">Add Payment</button>
-    </form>
-    <form action="logout.jsp" method="post">
-        <button type="submit">Logout</button>
-    </form>
+
+ 
+  
 <% } %>
 
 </div>
