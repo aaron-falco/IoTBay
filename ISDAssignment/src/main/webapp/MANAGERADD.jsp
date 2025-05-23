@@ -12,7 +12,7 @@
     <h1>Manager Catalog Editor</h1>
 
     <%
-        DBManager manager = (DBManager) session.getAttribute("manager");
+        DBManager manager = (DBManager) session.getAttribute("db");
         ArrayList<Product> products = null;
 
         if (manager != null) {

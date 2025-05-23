@@ -1,16 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="uts.isd.User" %>
-<!DOCTYPE html>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="uts.isd.CartItem" %>
 
-    <%
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-    %>
-           <p>You are not logged in</p>
-           <a href="register.jsp">Register</a>
-    <%
-        } else {  
-    %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -18,60 +11,74 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-            <ul>
-        <li><a href="Account.jsp">Account</a></li>
-        <li><a href="Catalog.jsp">Catalog</a></li>
-        
-        
-        
-            <% if (user.getUserType() == 2) { %>
-            <li><a href="MANAGERADD.jsp">Catalog Management</a></li>
-        <li><a href="ORDERMANAGEMENT.jsp">Order Management</a></li>
 
-<% } %>
-            <% if (user.getUserType() == 0) { %>
-            <li><a href="addPayment.jsp">Add Payment</a></li>
-        <li><a href="viewPayments.jsp">View Payments</a></li>
-
-<% } %>
-
-        <li><a href="logout.jsp">Logout</a></li>
-
-    </ul>
-
-    <div class="defaultDivStyle">
-
-    <h2>Main Page</h2>
-        <p>Your email: <%= user.getEmail() %></p>
-        <p>Your password: <%= user.getPassword() %></p>
-    
-    <% if(user.getFirstName() != null){ %>
-    <p>Your first name: <%= user.getFirstName() %></p>
-    <p>Your last name: <%= user.getLastName() %></p>
-    <%}%>
-    <p>You are
 <%
-    switch (user.getUserType()) {
-        case 0:
-            out.print("a Customer");
-            break;
-        case 1:
-            out.print("a Staff Member");
-            break;
-        case 2:
-            out.print("an Admin");
-            break;
-        default:
-            out.print("Not Logged In");
-    }
+    User user = (User) session.getAttribute("user");
+    ArrayList<CartItem> cart = (ArrayList<CartItem>) session.getAttribute("cart");
 %>
-</p>
 
+<ul>
+    <li><a href="Catalog.jsp">Catalog</a></li>
+    <li><a href="Account.jsp">Account</a></li>
+    <% if (user != null && user.getUserType() == 0) { %>
+        <li><a href="CART.jsp">🛒 My Cart</a></li>
+        <li><a href="viewCustomerOrder.jsp">📜 My Orders</a></li>
+    <% } %>
+    <li><a href="logout.jsp">Logout</a></li>
+</ul>
 
+<div class="defaultDivStyle">
+    <h2>Welcome to IoTBay</h2>
 
+<%
+    if (user == null) {
+%>
+    <p>You are not logged in.</p>
+    <a href="login.jsp">Login</a> or <a href="register.jsp">Register</a>
+<%
+    } else {
+%>
+    <p>Email: <%= user.getEmail() %></p>
+    <p>Password: <%= user.getPassword() %></p>
+
+    <% if (user.getFirstName() != null) { %>
+        <p>First Name: <%= user.getFirstName() %></p>
+        <p>Last Name: <%= user.getLastName() %></p>
+    <% } %>
+
+    <p>You are 
     <%
+        switch (user.getUserType()) {
+            case 0: out.print("a Customer"); break;
+            case 1: out.print("a Staff Member"); break;
+            case 2: out.print("an Admin"); break;
+            default: out.print("Unknown Role");
         }
     %>
-    </div>
+    </p>
+
+    <%-- Admin Only Buttons --%>
+    <% if (user.getUserType() == 2) { %>
+        <form action="MANAGERADD.jsp" method="post">
+            <button type="submit">Edit Catalog</button>
+        </form>
+        <form action="admin_orders.jsp" method="post">
+            <button type="submit">View All Orders</button>
+        </form>
+    <% } %>
+
+    <%-- Common Buttons --%>
+    <form action="Catalog.jsp" method="post">
+        <button type="submit">Browse Products</button>
+    </form>
+    <form action="addPayment.jsp" method="post">
+        <button type="submit">Add Payment</button>
+    </form>
+    <form action="logout.jsp" method="post">
+        <button type="submit">Logout</button>
+    </form>
+<% } %>
+
+</div>
 </body>
 </html>

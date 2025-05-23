@@ -19,7 +19,7 @@
             if ("POST".equalsIgnoreCase(request.getMethod())) {
                 try {
                     String id = request.getParameter("id");
-                    DBManager manager = (DBManager) session.getAttribute("manager");
+                    DBManager manager = (DBManager) session.getAttribute("db");
 
                     if (manager != null) {
                         manager.deleteProduct(id);

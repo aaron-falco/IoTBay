@@ -6,24 +6,23 @@ package uts.isd;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Aaron
- */
-public class Order implements Serializable{
+public class Order implements Serializable {
     private String orderId;
     private String orderCustomerId;
     private String orderProductId;
     private float orderPrice;
     private int quantity;
+    private String orderStatus;
 
-    public Order(String id, String customerId, String productId, float price, int qty) {
-      this.orderId = id;
+    public Order(String id, String customerId, String productId, float price, int qty, String status) {
+        this.orderId = id;
         this.orderCustomerId = customerId;
         this.orderProductId = productId;
         this.quantity = qty;
         this.orderPrice = price;
+        this.orderStatus = status;
     }
+
     public String getOrderId() {
         return orderId;
     }
@@ -42,6 +41,10 @@ public class Order implements Serializable{
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getOrderStatus() {                   
+        return orderStatus;
     }
 
     public void setOrderId(String orderId) {
@@ -63,5 +66,8 @@ public class Order implements Serializable{
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
+    public void setOrderStatus(String orderStatus) {   
+        this.orderStatus = orderStatus;
+    }
 }
