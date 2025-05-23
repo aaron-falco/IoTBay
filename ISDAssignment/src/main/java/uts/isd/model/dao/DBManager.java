@@ -2,11 +2,9 @@ package uts.isd.model.dao;
 
 import uts.isd.Product;
 import uts.isd.UserLoginRecord;
-import uts.isd.PaymentInfo;
 import uts.isd.Order;
 import uts.isd.User;
 import java.sql.*;
-import java.util.ArrayList;
 import uts.isd.PaymentInfo;
 import java.util.List;
 import java.util.ArrayList;
@@ -285,15 +283,16 @@ public class DBManager {
             String productId = rs.getString(3);
             float price = rs.getFloat(4);
             int qty = rs.getInt(5);
-            return new Order(id, customerId, productId, price, qty);
+            String status = rs.getString (6);
+            return new Order(id, customerId, productId, price, qty, status);
         }
     }
     return null;
     }
-    public void addOrder(String id, String customerId, String productId, float price, int quantity) throws SQLException {
-        String query = "INSERT INTO ISDUSER.Orders VALUES ('" + id + "', '" + customerId + "', '" + productId + "', " + price + ", " + quantity + ")";
-        st.executeUpdate(query);
-    }
+   public void addOrder(String id, String customerId, String productId, float price, int quantity, String status) throws SQLException {
+    String query = "INSERT INTO ISDUSER.Orders VALUES ('" + id + "', '" + customerId + "', '" + productId + "', " + price + ", " + quantity + ", '" + status + "')";
+    st.executeUpdate(query);
+}
     public void updateOrder(String id, String customerId, String productId, float price, int quantity, String status) throws SQLException {
         String query = "UPDATE ISDUSER.Orders SET orderCustomerId = '" + customerId + "', orderProductId = '" + productId + "', orderPrice = " + price + ", orderQuantity = " + quantity + ", orderStatus = '" + status +  "' WHERE orderId = '" + id + "'";
         st.executeUpdate(query);
@@ -312,7 +311,8 @@ public class DBManager {
             String productId = rs.getString(3);
             float price = rs.getFloat(4);
             int qty = rs.getInt(5);
-            temp.add(new Order(id, customerId, productId, price, qty));
+            String status = rs.getString (6);
+            temp.add(new Order(id, customerId, productId, price, qty, status));
         }
         return temp;
     }
@@ -337,11 +337,34 @@ public class DBManager {
             String productId = rs.getString("orderProductId");
             float price = rs.getFloat("orderPrice");
             int qty = rs.getInt("orderQuantity");
+            String status = rs.getString("orderStatus");
 
-            results.add(new Order(id, customerId, productId, price, qty));
+            results.add(new Order(id, customerId, productId, price, qty,status));
         }
         return results;
     }
+    public ArrayList<Order> searchOrdersByDate(String customerId, String date) throws SQLException {
+    String query = "SELECT * FROM ISDUSER.Orders WHERE orderCustomerId = '" + customerId + "' AND orderId LIKE '%" + date + "%'";
+    ResultSet rs = st.executeQuery(query);
+    ArrayList<Order> results = new ArrayList<>();
+
+    while (rs.next()) {
+        String id = rs.getString("orderId");
+        String productId = rs.getString("orderProductId");
+        float price = rs.getFloat("orderPrice");
+        int qty = rs.getInt("orderQuantity");
+        String status = rs.getString("orderStatus");
+
+        results.add(new Order(id, customerId, productId, price, qty, status));
+    }
+    return results;
+}
+public void cancelOrder(String orderId) throws SQLException {
+    String query = "UPDATE ISDUSER.Orders SET orderStatus='Cancelled' WHERE orderId='" + orderId + "'";
+    st.executeUpdate(query);
+}
+
+
 
     public void cancelOrdersByUserId(String userId) throws SQLException {
         String query = "UPDATE ISDUSER.ORDERS SET orderStatus = 'Cancelled' WHERE orderCustomerId = '" + userId + "'";

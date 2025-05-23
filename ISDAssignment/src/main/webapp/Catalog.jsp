@@ -6,7 +6,7 @@
 <%@ page import="uts.isd.Product" %>
 <%@ page import="uts.isd.model.dao.DBManager" %>
 <%
-    DBManager manager = (DBManager) session.getAttribute("manager");
+    DBManager manager = (DBManager) session.getAttribute("db");
     ArrayList<Product> products = null;
 
     if (manager != null) {
@@ -49,6 +49,13 @@
                     <td><%= p.getProductDescription() %></td>
                     <td><%= p.getQuantity() %></td>
                     <td>$<%= p.getPrice() %></td>
+                    <td>
+                        <form action="addtoCART.jsp" method="post">
+                            <input type="hidden" name="productId" value="<%= p.getProductId() %>"/>
+                            <input type="number" name="quantity" value="1" min="1" max="<%= p.getQuantity() %>"/>
+                            <input type="submit" value="Add to Cart" />
+                        </form>
+                    </td>
                 </tr>
             <% } %>
         </table>

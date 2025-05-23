@@ -38,6 +38,7 @@
                     }
                     else{
                         session.setAttribute("user", user);
+                        session.setAttribute("userId", user.getUserId());
                         int recordIdInt = db.getRowCountUserLoginRecords() + 1;
                         String recordId = "UR" + String.valueOf(recordIdInt);
                         String userId = user.getUserId();
