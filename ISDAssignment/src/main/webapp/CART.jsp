@@ -48,7 +48,7 @@
                 <td><%= item.getQuantity() %></td>
                 <td>$<%= subtotal %></td>
                 <td>
-        <form action="removeFromCart.jsp" method="post">
+        <form action="Removefromcart.jsp" method="post">
             <input type="hidden" name="productId" value="<%= p.getProductId() %>" />
             <input type="submit" value="Remove" />
         </form>

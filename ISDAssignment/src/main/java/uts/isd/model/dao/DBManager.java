@@ -289,10 +289,10 @@ public class DBManager {
     }
     return null;
     }
-    public void addOrder(String id, String customerId, String productId, float price, int quantity, String status) throws SQLException {
-        String query = "INSERT INTO ISDUSER.Orders VALUES ('" + id + "', '" + customerId + "', '" + productId + "', " + price + ", " + quantity + "'"+status+"')";
-        st.executeUpdate(query);
-    }
+   public void addOrder(String id, String customerId, String productId, float price, int quantity, String status) throws SQLException {
+    String query = "INSERT INTO ISDUSER.Orders VALUES ('" + id + "', '" + customerId + "', '" + productId + "', " + price + ", " + quantity + ", '" + status + "')";
+    st.executeUpdate(query);
+}
     public void updateOrder(String id, String customerId, String productId, float price, int quantity, String status) throws SQLException {
         String query = "UPDATE ISDUSER.Orders SET orderCustomerId = '" + customerId + "', orderProductId = '" + productId + "', orderPrice = " + price + ", orderQuantity = " + quantity + ", orderStatus = '" + status +  "' WHERE orderId = '" + id + "'";
         st.executeUpdate(query);

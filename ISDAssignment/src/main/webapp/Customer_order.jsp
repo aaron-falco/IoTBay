@@ -10,7 +10,7 @@
 <%@ page import="uts.isd.model.dao.DBManager" %>
 
 <%
-    DBManager manager = (DBManager) session.getAttribute("manager");
+    DBManager manager = (DBManager) session.getAttribute("db");
     String userId = (String) session.getAttribute("userId");
     ArrayList<Order> orders = new ArrayList<Order>();
     String message = "";

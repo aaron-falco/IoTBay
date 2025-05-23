@@ -6,8 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="uts.isd.CartItem" %>
 <%@ page import="uts.isd.Product" %>
+<%@ page import="uts.isd.CartItem" %>
 <%@ page import="uts.isd.model.dao.DBManager" %>
 
 <%
@@ -15,7 +15,12 @@
     String userId = (String) session.getAttribute("userId");
     ArrayList<CartItem> cart = (ArrayList<CartItem>) session.getAttribute("cart");
 
-    if (manager != null && cart != null && userId != null) {
+    // Debug prints to check what's available in session
+    out.println("<p>Debug - Manager: " + manager + "</p>");
+    out.println("<p>Debug - User ID: " + userId + "</p>");
+    out.println("<p>Debug - Cart: " + (cart != null ? cart.size() + " items" : "null") + "</p>");
+
+    if (manager != null && userId != null && cart != null && !cart.isEmpty()) {
         try {
             for (CartItem item : cart) {
                 Product product = item.getProduct();
@@ -23,12 +28,12 @@
                 float price = product.getPrice() * quantity;
                 String productId = product.getProductId();
 
-                // Simple unique order ID using current time + productId
+                // Generate order ID using timestamp + productId
                 String orderId = "ORD" + System.currentTimeMillis() + productId;
 
                 manager.addOrder(orderId, userId, productId, price, quantity, "Unprocessed");
 
-                // Optionally store the orderId for payment processing
+                // Store the last order ID to session (for payment linkage)
                 session.setAttribute("lastOrderId", orderId);
             }
 
@@ -40,9 +45,12 @@
             response.sendRedirect("addPayment.jsp");
 
         } catch (Exception e) {
-            out.println("<p>Error placing order: " + e.getMessage() + "</p>");
+            out.println("<p style='color:red;'>❌ Error placing order: " + e.getMessage() + "</p>");
         }
     } else {
-        out.println("<p>Cart is empty or session expired. <a href='Catalog.jsp'>Return to Catalog</a></p>");
+%>
+        <p style="color:red;">❌ Cart is empty or session expired.</p>
+        <a href="Catalog.jsp">← Return to Catalog</a>
+<%
     }
 %>
