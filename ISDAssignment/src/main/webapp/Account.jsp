@@ -52,7 +52,7 @@
                 <label for="password">Password:   </label>
                 <input type="text" id="password" name="password" value="<%= user.getPassword() %>" required><br><br>
                 <label for="phoneNumber">Phone Number:   </label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="<%= user.getPhoneNumber() %>" pattern="04[0-9]{8}" required><br><br>            
+                <input type="tel" id="phoneNumber" name="phoneNumber" value="<%= user.getPhoneNumber() %>" pattern="04[0-9]{8}" required><br><br>            
                 <input type="submit" value="Update">
             </form>
             <% if(accountUpdated != null){ 
