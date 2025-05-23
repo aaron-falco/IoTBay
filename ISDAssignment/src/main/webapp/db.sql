@@ -28,11 +28,11 @@ CREATE TABLE PRODUCTS(
 
 CREATE TABLE ORDERS(
     orderId VARCHAR(30),
-    orderCustomerId VARCHAR(25),
-    orderProductId VARCHAR(25),
+    orderCustomerId VARCHAR(30),
+    orderProductId VARCHAR(30),
     orderPrice FLOAT,
     orderQuantity INTEGER,
-    orderStatus VARCHAR(20), -- Can be Unprocessed, Processed, Completed or Cancelled
+    orderStatus VARCHAR(30), -- Can be Unprocessed, Processed, Completed or Cancelled
     PRIMARY KEY (orderId)
 );
 
