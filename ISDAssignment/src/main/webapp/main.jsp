@@ -20,13 +20,15 @@
 <ul>
     <li><a href="Catalog.jsp">Catalog</a></li>
     <li><a href="Account.jsp">Account</a></li>
-    <li><a href="addPayment.jsp">Add Payment</a></li>
+    
     <% if (user != null && user.getUserType() == 0) { %>
         <li><a href="CART.jsp">🛒 My Cart</a></li>
         <li><a href="viewCustomerOrder.jsp">📜 My Orders</a></li>
+        <li><a href="addPayment.jsp">Add Payment</a></li>
+        <li><a href="viewPayment.jsp">View Payment</a></li>
     <% } %>
     <% if (user != null && user.getUserType() == 2) { %>
-        <li><a href="MANAGERADD.jsp.jsp">Catalogue Manager</a></li>
+        <li><a href="MANAGERADD.jsp">Catalogue Manager</a></li>
         <li><a href="ORDERMANAGEMENT.jsp">Order Management</a></li>
     <% } %>
     <li><a href="logout.jsp">Logout</a></li>
