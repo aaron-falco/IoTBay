@@ -27,7 +27,7 @@ CREATE TABLE PRODUCTS(
 );
 
 CREATE TABLE ORDERS(
-    orderId VARCHAR(10),
+    orderId VARCHAR(30),
     orderCustomerId VARCHAR(10),
     orderProductId VARCHAR(10),
     orderPrice FLOAT,

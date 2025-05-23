@@ -19,15 +19,23 @@
 </head>
 <body>
             <ul>
-        <li><a href="Catalog.jsp">Catalog</a></li>
         <li><a href="Account.jsp">Account</a></li>
-        <li><a href="logout.jsp">Logout</a></li>
+        <li><a href="Catalog.jsp">Catalog</a></li>
+        
+        
         
             <% if (user.getUserType() == 2) { %>
             <li><a href="MANAGERADD.jsp">Catalog Management</a></li>
         <li><a href="ORDERMANAGEMENT.jsp">Order Management</a></li>
 
 <% } %>
+            <% if (user.getUserType() == 0) { %>
+            <li><a href="addPayment.jsp.jsp">Add Payment</a></li>
+        <li><a href="viewPayments.jsp">View Payments</a></li>
+
+<% } %>
+
+        <li><a href="logout.jsp">Logout</a></li>
 
     </ul>
 
@@ -59,17 +67,6 @@
 %>
 </p>
 
-
-    <form action="addPayment.jsp" method="post">
-        <button type="submit">Add Payment</button>
-    </form>
-    <form action="viewPayments.jsp" method="post">
-        <button type="submit">View Payments</button>
-    </form>
-
-    <%
-        }
-    %>
     </div>
 </body>
 </html>
