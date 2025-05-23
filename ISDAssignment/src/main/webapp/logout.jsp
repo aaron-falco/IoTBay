@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Sign Out</title>
-    <link rel="stylesheet" href="IoTBayStyles.css">
+    <link rel="stylesheet" href="styles.css">
     <script>
         function confirmSignOut() {
             if (confirm("Are you sure you want to sign out?")) {
