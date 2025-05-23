@@ -21,7 +21,7 @@ public class PaymentDAO {
         this.conn = conn;
     }
 
-    // Create (Insert)
+   
     public void addPayment(PaymentInfo payment) throws SQLException {
         String query = "INSERT INTO Payments(paymentInfoId, orderId, paymentType, cardNumber, cvc, expiryDate, paymentAmount, paymentDate) " +
                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -38,7 +38,7 @@ public class PaymentDAO {
         }
     }
 
-    // Read (Retrieve by payment ID)
+    
     public PaymentInfo getPaymentById(String paymentInfoId) throws SQLException {
         String query = "SELECT * FROM Payments WHERE paymentInfoId = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -51,7 +51,7 @@ public class PaymentDAO {
         return null;
     }
 
-    // Read (All payments for an order/user)
+    
     public ArrayList<PaymentInfo> getPaymentsByOrderId(String orderId) throws SQLException {
         String query = "SELECT * FROM Payments WHERE orderId = ?";
         ArrayList<PaymentInfo> payments = new ArrayList<>();
@@ -65,7 +65,7 @@ public class PaymentDAO {
         return payments;
     }
 
-    // Update
+    
     public void updatePayment(PaymentInfo payment) throws SQLException {
         String query = "UPDATE Payments SET paymentType=?, cardNumber=?, cvc=?, expiryDate=?, paymentAmount=?, paymentDate=? " +
                        "WHERE paymentInfoId=?";
@@ -81,7 +81,7 @@ public class PaymentDAO {
         }
     }
 
-    // Delete
+    
     public void deletePayment(String paymentInfoId) throws SQLException {
         String query = "DELETE FROM Payments WHERE paymentInfoId = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -90,7 +90,7 @@ public class PaymentDAO {
         }
     }
 
-    // Helper method
+   
     private PaymentInfo extractPaymentFromResultSet(ResultSet rs) throws SQLException {
         PaymentInfo payment = new PaymentInfo();
         payment.setPaymentInfoId(rs.getString("paymentInfoId"));

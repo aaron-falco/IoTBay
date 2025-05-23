@@ -347,7 +347,7 @@ public class DBManager {
         String query = "UPDATE ISDUSER.ORDERS SET orderStatus = 'Cancelled' WHERE orderCustomerId = '" + userId + "'";
         st.executeUpdate(query);
     }
-
+        
     public void addPayment(PaymentInfo payment) throws SQLException {
         String query = "INSERT INTO Payments (paymentInfoId, ORDERID, paymentType, cardNumber, cvc, expiryDate, paymentAmount, paymentDate) " +
                        "VALUES ('" + payment.getPaymentInfoId() + "', '" + payment.getOrderId() + "', '" + payment.getPaymentType() + "', '" +
@@ -359,7 +359,7 @@ public class DBManager {
     }
 
 
-        // Read (Retrieve by payment ID)
+        
         public PaymentInfo getPaymentById(String paymentInfoId) throws SQLException {
             String query = "SELECT * FROM Payments WHERE paymentInfoId = ?";
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -372,7 +372,7 @@ public class DBManager {
             return null;
         }
 
-        // Read (All payments for an order/user)
+        
         public ArrayList<PaymentInfo> getPaymentsByOrderId(String orderId) throws SQLException {
             String query = "SELECT * FROM Payments WHERE orderId = ?";
             ArrayList<PaymentInfo> payments = new ArrayList<>();
@@ -386,7 +386,7 @@ public class DBManager {
             return payments;
         }
 
-        // Update
+        
         public void updatePayment(PaymentInfo payment) throws SQLException {
             String query = "UPDATE Payments SET paymentType=?, cardNumber=?, cvc=?, expiryDate=?, paymentAmount=?, paymentDate=? " +
                            "WHERE paymentInfoId=?";
@@ -402,7 +402,7 @@ public class DBManager {
             }
         }
 
-        // Delete
+        
         public void deletePayment(String paymentInfoId) throws SQLException {
             String query = "DELETE FROM Payments WHERE paymentInfoId = ?";
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -411,7 +411,7 @@ public class DBManager {
             }
         }
 
-        // Helper method
+        
         private PaymentInfo extractPaymentFromResultSet(ResultSet rs) throws SQLException {
             PaymentInfo payment = new PaymentInfo();
             payment.setPaymentInfoId(rs.getString("paymentInfoId"));
@@ -444,6 +444,8 @@ public class DBManager {
         }
         return list;
     }
+        
+
         
 }
 

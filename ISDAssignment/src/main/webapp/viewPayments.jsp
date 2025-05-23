@@ -40,16 +40,30 @@
     for (PaymentInfo p : payments) {
 %>
     <div style="border: 1px solid #ccc; padding: 12px; width: 250px; border-radius: 6px; background-color: #f9f9f9;">
+        <%--
         <p><strong>ID:</strong> <%= p.getPaymentInfoId() %></p>
         <p><strong>Order ID:</strong> <%= p.getOrderId() %></p>
+        --%>
         <p><strong>Type:</strong> <%= p.getPaymentType() %></p>
         <p><strong>Card:</strong> <%= p.getCardNumber() %></p>
         <p><strong>CVC:</strong> <%= p.getCvc() %></p>
         <p><strong>Expiry:</strong> <%= p.getExpiryDate() %></p>
         <p><strong>Amount:</strong> <%= p.getPaymentAmount() %></p>
         <p><strong>Date:</strong> <%= p.getPaymentDate() %></p>
+        
+        <form action="editPayment.jsp" method="get" style="display:inline;">
+            <input type="hidden" name="paymentId" value="<%= p.getPaymentInfoId() %>">
+            <button type="submit">Edit</button>
+        </form>
+
+        <form action="deletePayment.jsp" method="post" style="display:inline;">
+            <input type="hidden" name="paymentId" value="<%= p.getPaymentInfoId() %>">
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this payment?');">Delete</button>
+        </form>
     </div>
+        
 <%
+    
                 }
             } else {
                 out.println("<p>No payments found.</p>");

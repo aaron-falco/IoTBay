@@ -33,18 +33,20 @@
 
 
 <form action="paymentProcessing.jsp" method="post">
+<%--
     <label for="paymentId">Payment ID:</label><br>
     <input type="text" name="paymentId" required><br><br>
     
     <label for="orderId">Order ID:</label><br>
-    <input type="text" name="orderId" required><br><br>
+    <input type="text" name="orderId" required><br><br
+--%>
     
     <label for="paymentType">Payment Type:</label><br>
     <select name="paymentType" required>
         <option value="">-- Select Payment Type --</option>
         <option value="Credit Card">Visa</option>
         <option value="Debit Card">MasterCard</option>
-        <option value="PayPal">Amex</option>
+        <option value="PayPal">PayPal</option>
     
     </select><br><br>
 
