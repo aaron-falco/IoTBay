@@ -62,7 +62,7 @@
             </tr>
         </table>
 
-        <form action="checkout.jsp" method="post">
+        <form action="Customer_Checkout.jsp" method="post">
             <input type="submit" value="Checkout Now" />
         </form>
         <br />

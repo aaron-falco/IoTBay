@@ -50,7 +50,7 @@
                     <td><%= p.getQuantity() %></td>
                     <td>$<%= p.getPrice() %></td>
                     <td>
-                        <form action="addToCart.jsp" method="post">
+                        <form action="addtoCART.jsp" method="post">
                             <input type="hidden" name="productId" value="<%= p.getProductId() %>"/>
                             <input type="number" name="quantity" value="1" min="1" max="<%= p.getQuantity() %>"/>
                             <input type="submit" value="Add to Cart" />

@@ -42,5 +42,5 @@
     }
 
     session.setAttribute("cart", cart);
-    response.sendRedirect("cart.jsp");
+    response.sendRedirect("CART.jsp");
 %>
