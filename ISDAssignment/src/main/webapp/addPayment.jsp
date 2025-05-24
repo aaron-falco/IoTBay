@@ -51,13 +51,39 @@
     </select><br><br>
 
     <label for="cardNumber">Card Number:</label><br>
-    <input type="text" name="cardNumber" required><br><br>
+    <input type="number" name="cardNumber" required><br><br>
 
     <label for="cvc">CVC:</label><br>
-    <input type="text" name="cvc" required><br><br>
+    <input type="number" name="cvc" min="001" max="999" required><br><br>
 
     <label for="expiryDate">Expiry Date (MM/YY):</label><br>
-    <input type="text" name="expiryDate" required><br><br>
+    <input type="text" name="expiryDate" id="expiryDate" placeholder="MM/YY" required 
+           onblur="validateExpiryDate()"><br><br>
+
+    <script>
+    function validateExpiryDate() {
+        const input = document.getElementById("expiryDate").value.trim();
+        const regex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+
+        if (!regex.test(input)) {
+            alert("Invalid format. Use MM/YY.");
+            return false;
+        }
+
+        const [month, year] = input.split("/").map(Number);
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear() % 100; // e.g. 25 for 2025
+        const currentMonth = currentDate.getMonth() + 1; // getMonth() is 0-indexed
+
+        if (year < currentYear || (year === currentYear && month < currentMonth)) {
+            alert("Card has expired.");
+            document.getElementById("expiryDate").value = "";
+            return false;
+        }
+
+        return true;
+    }
+    </script>
 
     <label for="paymentAmount">Amount:</label><br>
     <input type="number" name="paymentAmount" step="0.01" required><br><br>
