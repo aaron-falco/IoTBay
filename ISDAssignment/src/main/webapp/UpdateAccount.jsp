@@ -16,6 +16,9 @@
         <%
             DBManager db = (DBManager) session.getAttribute("db");
             User user = (User) session.getAttribute("user");
+            
+            
+            
             user.setFirstName(request.getParameter("firstName"));
             user.setLastName(request.getParameter("lastName"));
             user.setEmail(request.getParameter("email"));
@@ -25,6 +28,7 @@
             db.updateUser(user.getUserId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getPhoneNumber(), user.getUserType());
 
             session.setAttribute("accountUpdated", true);
+            session.setAttribute("user", user);
             response.sendRedirect("Account.jsp");
         %>
     </body>

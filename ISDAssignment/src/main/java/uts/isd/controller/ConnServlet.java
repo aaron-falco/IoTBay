@@ -61,8 +61,7 @@
 
       
 
-       @Override //Add the DBConnector, DBManager, Connection instances to the session
-
+       @Override 
        protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
                throws ServletException, IOException {
