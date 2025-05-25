@@ -22,14 +22,20 @@
 <html>
 <head>
     <title>Product Catalog</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>Product Catalog</h2>
-    
-    <form action="searchProduct.jsp" method="get">
-    <input type="text" name="keyword" placeholder="Search by name or type" required />
-    <input type="submit" value="Search" />
-    </form>
+    <ul>
+        <li><a href="main.jsp">Home</a></li>
+        <li><a href="Account.jsp">Account</a></li>
+        <li><a href="logout.jsp">Logout</a></li>
+    </ul>
+    <div class="defaultDivStyle">
+        <h2>Product Catalog</h2>
+        <form action="searchProduct.jsp" method="get">
+        <input type="text" name="keyword" placeholder="Search by name or type" required />
+        <input type="submit" value="Search" />
+        </form>
 
     <% 
         User user = (User) session.getAttribute("user");
@@ -67,8 +73,9 @@
         <p>No products found or database connection not initialized.</p>
     <% } %> 
     
-        <form action="main.jsp" method="post">
+<!--        <form action="main.jsp" method="post">
         <button type="submit">Back</button>
-        </form>
+        </form>-->
+    </div>
 </body>
 </html>

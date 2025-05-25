@@ -18,7 +18,6 @@
             User user = (User) session.getAttribute("user");
             
             
-            
             user.setFirstName(request.getParameter("firstName"));
             user.setLastName(request.getParameter("lastName"));
             user.setEmail(request.getParameter("email"));

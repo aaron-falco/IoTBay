@@ -16,7 +16,7 @@
     <body>
         <ul>
             <li><a href="Catalog.jsp">Catalog</a></li>
-            <li><a href="main.jsp">Main</a></li>
+            <li><a href="main.jsp">Home</a></li>
             <li><a href="logout.jsp">Logout</a></li>
         </ul>
         <%

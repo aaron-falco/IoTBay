@@ -19,7 +19,7 @@
     </head>
     <body>
         <ul>
-            <li><a href="login.jsp">Login</a></li>
+            <li><a href="landing.jsp">Home</a></li>
             <li><a href="register.jsp">Register</a></li>
         </ul>
         <div class="defaultDivStyle">
